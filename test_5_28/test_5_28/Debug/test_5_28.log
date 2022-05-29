@@ -1,3 +1,3 @@
 ﻿  test_5_28.c
-D:\Anduin_code\anduins-code-warehouse\test_5_28\test_5_28\test_5_28.c(82): warning C4172: 返回局部变量或临时变量的地址: a
+D:\Anduin_code\anduins-code-warehouse\test_5_28\test_5_28\test_5_28.c(93): warning C4172: 返回局部变量或临时变量的地址: a
   test_5_28.vcxproj -> D:\Anduin_code\anduins-code-warehouse\test_5_28\Debug\test_5_28.exe

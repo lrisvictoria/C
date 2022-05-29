@@ -76,6 +76,17 @@
 //}
 
 //const 修饰函数的返回值
+//const int* GetVal()
+//{
+//	static int a = 10;
+//	return &a;
+//}
+//int main()
+//{
+//	const int* p = GetVal();
+//	//*p = 100;//不让指针通过返回值得方案去修改函数中的变量
+//}
+
 const int* GetVal()
 {
 	static int a = 10;
