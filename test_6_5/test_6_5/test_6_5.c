@@ -60,25 +60,39 @@
 //	return 0;
 //}
 //矩阵计算
-#include<stdio.h>
+//#include<stdio.h>
+//int main()
+//{
+//    int N = 0;
+//    int M = 0;
+//    int sum = 0;
+//    scanf("%d %d", &N, &M);
+//    int arr[10][10];
+//    for (int i = 0; i < N; i++)
+//    {
+//        for (int j = 0; j < M; j++)
+//        {
+//            scanf("%d ", &arr[i][j]);
+//            if (arr[i][j] > 0)
+//            {
+//                sum += arr[i][j];
+//            }
+//        }
+//    }
+//    printf("%d\n", sum);
+//    return 0;
+//}
+//他的思想其实就是呃，我找到比这个数字要插入的位置是这样的，
+//就是我找到了这个数字要插入的位置之后，然后呢，
+//我爸他这个数字之后的数字全部向后移动一个位置，
+//然后把数据插入进来，这样子的，把后边的数据全部向后移动一个位置这么一个意思。
 int main()
 {
-    int N = 0;
-    int M = 0;
-    int sum = 0;
-    scanf("%d %d", &N, &M);
-    int arr[10][10];
-    for (int i = 0; i < N; i++)
-    {
-        for (int j = 0; j < M; j++)
-        {
-            scanf("%d ", &arr[i][j]);
-            if (arr[i][j] > 0)
-            {
-                sum += arr[i][j];
-            }
-        }
-    }
-    printf("%d\n", sum);
-    return 0;
+	int n;
+	scanf("%d", &n);
+	int arr[100];
+	for (int i = 0; i < n; i++)
+	{
+		scanf("")
+	}
 }
