@@ -199,32 +199,81 @@
 //		getchar();
 //	}
 //}
-int main()
-{
-	int arr1[20];
-	int arr2[20];
-	int n,m;
-	scanf("%d", &n);
-	scanf("%d", &m);
-	int sum = 0;
-	for (int i = 0; i < n; i++)
-	{
-		scanf("%d", &arr1[i]);
-	}
-	for (int i = 0; i < m; i++)
-	{
-		scanf("%d", &arr2[i]);
-	}
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < m; j++)
-		{
-			if (arr1[i] == arr2[j])
-			{
-				sum += arr1[i];
-			}
-		}
-	}
-	printf("%d\n", sum);
-	return 0;
-}
+//int main()
+//{
+//	int arr1[20];
+//	int arr2[20];
+//	int n,m;
+//	scanf("%d", &n);
+//	scanf("%d", &m);
+//	int sum = 0;
+//	for (int i = 0; i < n; i++)
+//	{
+//		scanf("%d", &arr1[i]);
+//	}
+//	for (int i = 0; i < m; i++)
+//	{
+//		scanf("%d", &arr2[i]);
+//	}
+//	for (int i = 0; i < n; i++)
+//	{
+//		for (int j = 0; j < m; j++)
+//		{
+//			if (arr1[i] == arr2[j])
+//			{
+//				sum += arr1[i];
+//			}
+//		}
+//	}
+//	printf("%d\n", sum);
+//	return 0;
+//}
+//void test()
+//{
+//	static int a = 3;
+//	a++;
+//	printf("%d\n", a);
+//}
+//int main()
+//{
+//	int i = 0;
+//	while (i < 10)
+//	{
+//		test();
+//		i++;
+//	}
+//}
+//
+//#include <stdio.h>
+//int sum(int a)
+//{
+//    int c = 0;
+//    static int b = 3;
+//    c += 1;
+//    b += 2;
+//    return (a + b + c);
+//}
+//int main()
+//{
+//    int i;
+//    int a = 2;
+//    for (i = 0; i < 5; i++)
+//    {
+//        printf("%d,", sum(a));
+//    }
+//}
+
+#include<stdio.h>
+//int main()
+//{
+//    int score = 0;
+//    
+//    int sum = 0;
+//    for (int i = 0; i < 5; i++)
+//    {
+//        scanf("%d", &score);
+//        sum += score;
+//    }
+//    printf("%.1f", sum/5.0);
+//    return 0;
+//}
