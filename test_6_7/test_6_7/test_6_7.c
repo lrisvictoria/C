@@ -107,10 +107,29 @@
 //    }
 //    printf("%d\n", b);
 //}
-#include<stdio.h>
-int main()
-{
-    register int a = 0;
-    printf("&a = %p\n", &a);
-    return 0;
-}
+//#include<stdio.h>
+//int main()
+//{
+//    register int a = 0;
+//    printf("&a = %p\n", &a);
+//    return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//    int ch = 0;
+//    while ((ch = getchar()) != EOF)
+//    {
+//        if ((ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122))
+//        {
+//            printf("YES\n");
+//        }
+//        else
+//        {
+//            printf("NO\n");
+//        }
+//        getchar();
+//    }
+//    return 0;
+//}
