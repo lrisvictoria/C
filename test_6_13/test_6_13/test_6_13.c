@@ -531,3 +531,17 @@
 //	countDown(5);
 //	return 0;
 //}
+#include<stdio.h>
+int main()
+{
+	//static int b = 20;
+	{
+		static int b;
+	}
+	printf("%d", b);
+	func();
+}
+void func()
+{
+	printf("%d", b);
+}
