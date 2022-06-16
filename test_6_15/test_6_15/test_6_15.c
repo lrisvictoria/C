@@ -65,24 +65,30 @@
 //输入数据保证m <= n * h。
 //输入：8 5 16
 //输出：4
+//int main()
+//{
+//	int n, h, m;
+//	int i;
+//	while (scanf("%d %d %d", &n, &h, &m) == 3)//多组输入
+//	{
+//		//开盖喝完
+//		if (m % h == 0)
+//		{
+//			i = n - m / h;
+//			printf("%d\n", i);
+//		}
+//		//开盖没喝完
+//		else
+//		{
+//			i = n - m / h - 1;
+//			printf("%d\n", i);
+//		}
+//	}
+//	return 0;
+//}
 int main()
 {
-	int n, h, m;
-	int i;
-	while (scanf("%d %d %d", &n, &h, &m) == 3)//多组输入
-	{
-		//开盖喝完
-		if (m % h == 0)
-		{
-			i = n - m / h;
-			printf("%d\n", i);
-		}
-		//开盖没喝完
-		else
-		{
-			i = n - m / h - 1;
-			printf("%d\n", i);
-		}
-	}
-	return 0;
+	char a = 'abcd';
+	putchar(a);
+	printf("\n%d", a);
 }
