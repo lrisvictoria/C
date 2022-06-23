@@ -1,0 +1,5 @@
+﻿  补充.c
+D:\Anduin_code\anduins-code-warehouse\BC48的补充\BC48的补充\补充.c(42,7): warning C4013: “islower”未定义；假设外部返回 int
+D:\Anduin_code\anduins-code-warehouse\BC48的补充\BC48的补充\补充.c(44,19): warning C4013: “toupper”未定义；假设外部返回 int
+D:\Anduin_code\anduins-code-warehouse\BC48的补充\BC48的补充\补充.c(48,19): warning C4013: “tolower”未定义；假设外部返回 int
+  BC48的补充.vcxproj -> D:\Anduin_code\anduins-code-warehouse\BC48的补充\x64\Debug\BC48的补充.exe
