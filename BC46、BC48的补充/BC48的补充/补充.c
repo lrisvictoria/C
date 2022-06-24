@@ -33,20 +33,20 @@
 //islower - 检查字母是否为小写
 //toupper - 小写转化为大写
 //tolower - 大写转化为小写
-#include<stdio.h>
-int main()
-{
-	char ch;
-	while (scanf("%c", &ch) == 1)
-	{
-		if (islower(ch))
-		{
-			printf("%c\n", toupper(ch));
-		}
-		else
-		{
-			printf("%c\n", tolower(ch));
-		}
-		getchar();
-	}
-}
+//#include<stdio.h>
+//int main()
+//{
+//	char ch;
+//	while (scanf("%c", &ch) == 1)
+//	{
+//		if (islower(ch))
+//		{
+//			printf("%c\n", toupper(ch));
+//		}
+//		else
+//		{
+//			printf("%c\n", tolower(ch));
+//		}
+//		getchar();
+//	}
+//}

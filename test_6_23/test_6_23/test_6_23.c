@@ -200,3 +200,26 @@
 //        getchar();//吸收
 //    }
 //}
+#include <stdio.h>
+int main()
+{
+	char ch = 0;
+	char arr[] = "AEIOUaeiou";
+	//在%c的后边发给一个'\n'，其实在输入时候就会消化掉这个\n字符
+	//不会为下次留下空白字符的隐患
+	while (scanf("%c\n", &ch) != EOF)
+	{
+			int i = 0;
+		for (i = 0; i < 10; i++)
+		{
+			if (ch == arr[i])
+			{
+				printf("Vowel\n");
+				break;
+			}
+		}
+		if (i == 10)
+			printf("Consonant\n");
+	}
+	return 0;
+}
