@@ -1,2 +1,3 @@
 ﻿  test_7_06_2.c
+D:\Anduin_code\anduins-code-warehouse\test_7_06_2\test_7_06_2\test_7_06_2.c(123): warning C4715: “is_prime”: 不是所有的控件路径都返回值
   test_7_06_2.vcxproj -> D:\Anduin_code\anduins-code-warehouse\test_7_06_2\x64\Debug\test_7_06_2.exe
