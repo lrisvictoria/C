@@ -8,7 +8,7 @@
 
 #define EASY_COUNT 10
 
-#include <stdio.h>
+#include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
 

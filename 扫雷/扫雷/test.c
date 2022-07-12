@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 1 
+#define _CRT_SECURE_NO_WARNINGS 1
 #include"game.h"
 void menu()
 {
@@ -42,5 +42,5 @@ int main()
 			printf("选择错误，请重新选择\n");
 			break;
 		}
-	}while(input);
+	} while (input);
 }
