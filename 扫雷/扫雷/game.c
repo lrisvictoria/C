@@ -64,7 +64,6 @@ static void set_flag(char show[ROWS][COLS], int row, int col,int *pf)
 	int y = 0;
 	if (*pf == EASY_COUNT)
 	{
-		printf("标记数和雷数相等，无法标记\n");
 		return ;
 	}
 	while (1)
@@ -111,7 +110,7 @@ static void cancel_flag(char show[ROWS][COLS], int row, int col, int *pf)
 			}
 			else
 			{
-				printf("该位置未标记，无法取消标记\n");
+				printf("该位置未标记，无法取消标记!\n");
 				break;
 			}
 		}
@@ -228,6 +227,10 @@ void fine_mine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)
 			set_flag(show, row, col, pf);
 			flag_count = *pf;
 			system("cls");
+			if (*pf == 10)
+			{
+				printf("标记数和雷数相等，无法标记!\n");
+			}
 			show_board(show, row, col);
 		}
 		else if (op == 3)
