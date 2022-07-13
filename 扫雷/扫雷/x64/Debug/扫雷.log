@@ -1,7 +1,3 @@
 ﻿  game.c
-D:\Anduin_code\anduins-code-warehouse\扫雷\扫雷\game.c(68,3): warning C4033: “set_flag”必须返回值
-D:\Anduin_code\anduins-code-warehouse\扫雷\扫雷\game.c(131,13): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
-  test.c
-  正在生成代码...
-D:\Anduin_code\anduins-code-warehouse\扫雷\扫雷\game.c(95): warning C4715: “set_flag”: 不是所有的控件路径都返回值
+D:\Anduin_code\anduins-code-warehouse\扫雷\扫雷\game.c(129,13): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
   扫雷.vcxproj -> D:\Anduin_code\anduins-code-warehouse\扫雷\x64\Debug\扫雷.exe

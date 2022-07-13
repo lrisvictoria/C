@@ -58,11 +58,11 @@ static void flag_menu()
 	printf("####################################\n");
 }
 //标记雷的位置
-static int set_flag(char show[ROWS][COLS], int row, int col,unsigned int flag)
+static void set_flag(char show[ROWS][COLS], int row, int col,int *pf)
 {
 	int x = 0;
 	int y = 0;
-	if (flag == EASY_COUNT)
+	if (*pf == EASY_COUNT)
 	{
 		printf("标记数和雷数相等，无法标记\n");
 		return ;
@@ -76,7 +76,7 @@ static int set_flag(char show[ROWS][COLS], int row, int col,unsigned int flag)
 			if (show[x][y] == '*')
 			{
 				show[x][y] = '#';
-				flag++;
+				(*pf)++;
 				break;
 			}
 			else
@@ -91,10 +91,9 @@ static int set_flag(char show[ROWS][COLS], int row, int col,unsigned int flag)
 			continue;
 		}
 	}
-	return flag;
 }
 //取消标记
-static int cancel_flag(char show[ROWS][COLS], int row, int col, unsigned int flag)
+static void cancel_flag(char show[ROWS][COLS], int row, int col, int *pf)
 {
 	int x = 0;
 	int y = 0;
@@ -107,7 +106,7 @@ static int cancel_flag(char show[ROWS][COLS], int row, int col, unsigned int fla
 			if (show[x][y] == '#')
 			{
 				show[x][y] = '*';
-				flag--;
+				(*pf)--;
 				break;
 			}
 			else
@@ -122,7 +121,6 @@ static int cancel_flag(char show[ROWS][COLS], int row, int col, unsigned int fla
 			continue;
 		}
 	}
-	return flag;
 }
 static void change_place(char mine[ROWS][COLS], int row, int col, int x, int y)
 {
@@ -183,6 +181,7 @@ void fine_mine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)
 	int op = 0;//选项
 	int fch = 1;
 	unsigned int flag_count = 0;
+	int* pf = &flag_count;
 	while (win < row * col - EASY_COUNT)
 	{
 	again:
@@ -226,13 +225,15 @@ void fine_mine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)
 		}
 		else if (op == 2)
 		{
-			flag_count = set_flag(show, row, col, flag_count);
+			set_flag(show, row, col, pf);
+			flag_count = *pf;
 			system("cls");
 			show_board(show, row, col);
 		}
 		else if (op == 3)
 		{
-			flag_count = cancel_flag(show, row, col, flag_count);
+			cancel_flag(show, row, col, pf);
+			flag_count = *pf;
 			system("cls");
 			show_board(show, row, col);
 		}
@@ -248,7 +249,7 @@ void fine_mine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)
 		show_board(show, ROW, COL);
 		printf("恭喜你，扫雷成功!\n");
 		printf("获得称号，排雷战士！\n");
-		printf("答案揭晓:");
+		printf("答案揭晓:\n");
 		show_board(mine, ROW, COL);
 	}
 }
