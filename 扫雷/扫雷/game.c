@@ -49,32 +49,87 @@ void show_board(char arr[ROWS][COLS], int row, int col)
 	}
 	printf("------------扫雷------------\n");
 }
+static void flag_menu()
+{
+	printf("####################################\n");
+	printf("######### 1.选择非雷区域  ##########\n");
+	printf("######### 2.标记雷的位置  ##########\n");
+	printf("######### 3.取消雷的标记  ##########\n");
+	printf("####################################\n");
+}
 //标记雷的位置
-void mark_mine(char show[ROWS][COLS], int row, int col)
+static int set_flag(char show[ROWS][COLS], int row, int col,unsigned int flag)
 {
 	int x = 0;
 	int y = 0;
+	if (flag == EASY_COUNT)
+	{
+		printf("标记数和雷数相等，无法标记\n");
+		return ;
+	}
 	while (1)
 	{
-		printf("请输入你想要标记位置的坐标:>");
+		printf("请输入标记坐标:>");
 		scanf("%d %d", &x, &y);
-		if (x >= 1 && x <= row && y >= 1 && y <= col)
+		if (x >= 1 && y >= 1 && x <= row && y <= col)
 		{
 			if (show[x][y] == '*')
 			{
-				show[x][y] = '!';
+				show[x][y] = '#';
+				flag++;
 				break;
 			}
 			else
 			{
-				printf("该位置不能被标记，请重新输入!\n");
+				printf("该位置已被排查，请重新输入!\n");
+				continue;
 			}
 		}
 		else
 		{
 			printf("坐标非法，请重新输入!\n");
+			continue;
 		}
 	}
+	return flag;
+}
+//取消标记
+static int cancel_flag(char show[ROWS][COLS], int row, int col, unsigned int flag)
+{
+	int x = 0;
+	int y = 0;
+	while (1)
+	{
+		printf("请输入取消标记的坐标:>");
+		scanf("%d %d", &x, &y);
+		if (x >= 1 && y >= 1 && x <= row && y <= col)
+		{
+			if (show[x][y] == '#')
+			{
+				show[x][y] = '*';
+				flag--;
+				break;
+			}
+			else
+			{
+				printf("该位置未标记，无法取消标记\n");
+				break;
+			}
+		}
+		else
+		{
+			printf("坐标非法，请重新输入!\n");
+			continue;
+		}
+	}
+	return flag;
+}
+static void change_place(char mine[ROWS][COLS], int row, int col, int x, int y)
+{
+	x = rand() % row + 1;
+	y = rand() % col + 1;
+	mine[x][y] == '1';
+	printf("第一次踩雷，可真有你的，重新选!\n");
 }
 static int get_mine_count(char mine[ROWS][COLS], int x, int y)
 {
@@ -92,7 +147,7 @@ static int get_mine_count(char mine[ROWS][COLS], int x, int y)
 	return count;
 }
 //爆炸展开
-void boom_board(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col, int x, int y, int* p)
+static void boom_board(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col, int x, int y, int* p)
 {
 	if (x >= 1 && x <= row && y >= 1 && y <= col)
 	{
@@ -102,13 +157,13 @@ void boom_board(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col, 
 			(*p)++;
 			show[x][y] = ' ';
 			int i = 0;
-			int j = 0;
-			for (i = x - 1; i <= x + 1; i++)
+			for (i = -1; i <= 1; i++)
 			{
-				for (j = y - 1; j <= y + 1; j++)
+				int j = 0;
+				for (j = -1; j <= 1; j++)
 				{
-					if (show[i][j] == '*')    //限制递归条件，防止已经排查过的坐标再次递归，从而造成死递归
-						boom_board(mine, show, row, col, i, j, p);
+					if (show[x + i][y + j] == '*')
+						boom_board(mine, show, row, col, x + i, y + j, p);
 				}
 			}
 		}
@@ -125,53 +180,75 @@ void fine_mine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)
 	int y = 0;
 	int win = 0;
 	int* p = &win;
-	char ch = 0;
+	int op = 0;//选项
+	int fch = 1;
+	unsigned int flag_count = 0;
 	while (win < row * col - EASY_COUNT)
 	{
-		printf("请输入要排查雷的坐标:>");
-		scanf("%d %d", &x, &y);
-		if (x >= 1 && x <= row && y >= 1 && y <= col)
+	again:
+		flag_menu();
+		scanf("%d", &op);
+		if (op == 1)
 		{
-			if (mine[x][y] == '1')
+			printf("请输入要排查的坐标:>");
+			scanf("%d %d", &x, &y);
+			if (x >= 1 && y >= 1 && x <= row && y <= col)
 			{
-				printf("很遗憾，你被雷炸死了!\n");
-				show_board(mine, ROW, COL);
-				break;
-			}
-			else
-			{
-				if (show[x][y] != '*')
+				if (fch == 1 && mine[x][y] == '1')
 				{
-					printf("改坐标已排查，请重新输入!\n");
-					continue;
+					change_place(mine, row, col, x, y);
+					fch++;
 				}
 				else
 				{
-					boom_board(mine, show, row, col, x, y, p);
-					show_board(show, ROW, COL);
-					printf("需要标记的话请输入#，否则按任意键继续:>");
-					scanf(" %c", &ch);
-					if (ch == '#')
+					if (mine[x][y] == '1')
 					{
-						mark_mine(show, row, col);
-						show_board(show, row, col);
+						system("cls");
+						printf("很遗憾，你被雷炸死了!\n");
+						printf("游戏结束!\n");
+						show_board(mine, row, col);
+						break;
 					}
 					else
 					{
-						continue;
+						boom_board(mine, show, row, col, x, y, p);
+						system("cls");
+						show_board(show, row, col);
 					}
+					fch++;
 				}
 			}
+			else
+			{
+				printf("非法坐标，请重新输入!\n");
+				continue;
+			}
+		}
+		else if (op == 2)
+		{
+			flag_count = set_flag(show, row, col, flag_count);
+			system("cls");
+			show_board(show, row, col);
+		}
+		else if (op == 3)
+		{
+			flag_count = cancel_flag(show, row, col, flag_count);
+			system("cls");
+			show_board(show, row, col);
 		}
 		else
 		{
-			printf("非法坐标，请重新输入!\n");
+			printf("选择错误，请重新选择:>\n");
+			goto again;
 		}
 	}
 	if (win == row * col -EASY_COUNT)
 	{
+		system("cls");
+		show_board(show, ROW, COL);
 		printf("恭喜你，扫雷成功!\n");
 		printf("获得称号，排雷战士！\n");
-		show_board(show, ROW, COL);
+		printf("答案揭晓:");
+		show_board(mine, ROW, COL);
 	}
 }

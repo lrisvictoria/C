@@ -11,6 +11,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<windows.h>
 
 //≥ı ºªØ∆Â≈Ã
 void init_board(char arr[ROWS][COLS], int rows, int cols, char set);

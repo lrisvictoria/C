@@ -2,10 +2,10 @@
 #include"game.h"
 void menu()
 {
-	printf("**********************************\n");
-	printf("************* 1.play *************\n");
-	printf("************* 0.exit *************\n");
-	printf("**********************************\n");
+	printf("###################################\n");
+	printf("############  1.play   ############\n");
+	printf("############  0.exit   ############\n");
+	printf("###################################\n");
 }
 void game()
 {
@@ -16,6 +16,7 @@ void game()
 	init_board(show, ROWS, COLS, '*');
 	//布置雷
 	set_mine(mine, ROW, COL);
+	system("cls");
 	//打印棋盘
 	show_board(show, ROW, COL);
 	//排查雷
@@ -39,7 +40,7 @@ int main()
 			printf("退出游戏\n");
 			break;
 		default:
-			printf("选择错误，请重新选择\n");
+			printf("选择错误，请重新选择:>\n");
 			break;
 		}
 	} while (input);
