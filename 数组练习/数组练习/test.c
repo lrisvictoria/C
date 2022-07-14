@@ -77,18 +77,30 @@
 //	//init(arr, sz);
 //	print(arr, sz);
 //}
-int main()
+void swap(int arr1[], int arr2[], int sz)
 {
-	int arr1[] = { 1,2,3,4,5 };
-	int arr2[] = { 6,7,8,9,10 };
-	int sz1 = sizeof(arr1) / sizeof(arr1[0]);
 	int i = 0;
-	for (i = 0; i < sz1; i++)
+	for (i = 0; i < sz; i++)
 	{
 		int tmp = arr1[i];
 		arr1[i] = arr2[i];
 		arr2[i] = tmp;
 	}
+}
+int main()
+{
+	int arr1[] = { 1,2,3,4,5 };
+	int arr2[] = { 6,7,8,9,10 };
+	int sz1 = sizeof(arr1) / sizeof(arr1[0]);
+	/*int i = 0;
+	for (i = 0; i < sz1; i++)
+	{
+		int tmp = arr1[i];
+		arr1[i] = arr2[i];
+		arr2[i] = tmp;
+	}*/
+	int i = 0;
+	swap(arr1, arr2, sz1);
 	for (i = 0; i < sz1; i++)
 	{
 		printf("%d ", arr1[i]);
