@@ -241,3 +241,63 @@
 //	return 0;
 //}
 //一个汉字占两个字符
+//最小公倍数/最大公约数
+//#include<stdio.h>
+//int main()
+//{
+//	int m = 0;
+//	int n = 0;
+//	scanf("%d %d", &m, &n);
+//	int x = 0;//最大公约数
+//	int y = 0;//最小公倍数
+//	//辗转相除法
+//	int r = 0;
+//	while (r = m % n)
+//	{
+//		m = n;
+//		n = r;
+//	}
+//	x = n;
+//	y = m * n / x;
+//	printf("最大公约数：%d，最小公倍数：%d\n", x, y);
+//	return 0;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//	int m = 0;
+//	int n = 0;
+//	scanf("%d %d", &m, &n);
+//	int min = m > n ? m : n;
+//	while (1)
+//	{
+//		if ((min % m == 0) && (min % n == 0))
+//		{
+//			printf("%d\n", min);
+//			break;
+//		}
+//		min++;
+//	}
+//	return 0;
+//}
+//乘法表函数实现#include<stdio.h>
+void mul_table(int num)
+{
+	int i = 0;
+	for (i = 1; i <= num; i++)
+	{
+		int j = 0;
+		for (j = 1; j <= i; j++)
+		{
+			printf("%d*%-2d=%-3d ", j, i, i * j);
+		}
+		printf("\n");
+	}
+}
+int main()
+{
+	int n = 0;
+	scanf("%d", &n);
+	mul_table(n);
+	return 0;
+}
