@@ -1,0 +1,3 @@
+﻿  test.c
+D:\Anduin_code\anduins-code-warehouse\比特上机函数上\比特上机函数上\test.c(1,1): warning C4828: 文件包含在偏移 0xeab 处开始的字符，该字符在当前源字符集中无效(代码页 936)。
+  比特上机函数上.vcxproj -> D:\Anduin_code\anduins-code-warehouse\比特上机函数上\x64\Debug\比特上机函数上.exe
