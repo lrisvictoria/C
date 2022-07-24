@@ -294,6 +294,7 @@ void mul_table(int num)
 		printf("\n");
 	}
 }
+
 int main()
 {
 	int n = 0;
