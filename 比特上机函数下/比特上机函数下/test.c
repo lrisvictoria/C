@@ -209,3 +209,22 @@
 
 //当引用相关头文件的时候，相当于把头文件中的内容拷贝一份过来 
 //相当于形成了函数声明
+
+//每一次函数调用都会在栈区申请内存空间
+//无休止的递归会持续在栈上开辟空间，导致栈空间不足
+//导致程序奔溃
+
+#include<stdio.h>
+void Print(unsigned int n)
+{
+	if (n > 9)
+		Print(n / 10);
+	printf("%d ", n % 10);
+}
+int main()
+{
+	unsigned int num = 0;
+	scanf("%d", &num);
+	Print(num);
+	return 0;
+}
