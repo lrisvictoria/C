@@ -1,0 +1,3 @@
+﻿  test.c
+D:\Anduin_code\anduins-code-warehouse\整形的存储\整形的存储\test.c(1,1): warning C4828: 文件包含在偏移 0xef2 处开始的字符，该字符在当前源字符集中无效(代码页 936)。
+  整形的存储.vcxproj -> D:\Anduin_code\anduins-code-warehouse\整形的存储\x64\Debug\整形的存储.exe
