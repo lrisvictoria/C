@@ -45,6 +45,7 @@ void player_move(char board[ROW][COL], int row, int col)
 	int y = 0;
 	while (1)
 	{
+		printf("玩家下棋\n");
 		printf("请选择坐标:>");
 		scanf("%d %d", &x, &y);
 		if (x >= 1 && x <= row && y >= 1 && y <= col)
@@ -104,7 +105,7 @@ static int intelligent_computer(char board[ROW][COL], int row, int col, char ch)
 			//第一和第二个已下，下/阻拦第三个
 			if (board[0][j] == board[1][j] && board[0][j] == ch && board[2][j] == ' ')
 			{
-				board[i + 2][j] = '#';
+				board[2][j] = '#';
 				return 1;
 			}
 			//第一和第三个已下，下/阻拦第二个

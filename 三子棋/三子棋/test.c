@@ -15,7 +15,6 @@ void game()
 	init_board(board, ROW, COL);
 	//打印棋盘
 	system("cls");//清屏
-	printf("玩家下棋\n");
 	display_board(board, ROW, COL);
 	while (1)
 	{
