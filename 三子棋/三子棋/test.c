@@ -12,15 +12,17 @@ void game()
 	char ret = 0;
 	char board[ROW][COL] = { 0 };
 	//初始化棋盘
-	InitBoard(board, ROW, COL);
+	init_board(board, ROW, COL);
 	//打印棋盘
-	DisplayBoard(board, ROW, COL);
+	system("cls");//清屏
+	printf("玩家下棋\n");
+	display_board(board, ROW, COL);
 	while (1)
 	{
 		//玩家下棋
 		player_move(board, ROW, COL);
 		//玩家下棋后展示棋盘
-		DisplayBoard(board, ROW, COL);
+		display_board(board, ROW, COL);
 		//判断输赢
 		ret = is_win(board, ROW, COL);
 		if (ret != 'C')
@@ -28,9 +30,10 @@ void game()
 			break;
 		}
 		//电脑下棋
+		system("cls");//清屏
 		computer_move(board, ROW, COL);
 		//电脑下棋后棋盘展示
-		DisplayBoard(board, ROW, COL);
+		display_board(board, ROW, COL);
 		ret = is_win(board, ROW, COL);
 		if (ret != 'C')
 		{
@@ -39,15 +42,15 @@ void game()
 	}
 	if (ret == '*')
 	{
-		printf("玩家赢\n");
+		printf("恭喜你赢得游戏！\n");
 	}
 	else if (ret == '#')
 	{
-		printf("电脑赢了\n");
+		printf("很遗憾，你输了，电脑赢了\n");
 	}
 	else
 	{
-		printf("平局\n");
+		printf("平局，再来一把吧！\n");
 	}
 }
 void test()
