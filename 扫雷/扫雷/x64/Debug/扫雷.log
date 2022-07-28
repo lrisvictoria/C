@@ -1,0 +1,5 @@
+﻿  game.c
+C:\Users\刘轩\Desktop\扫雷\扫雷\game.c(128,13): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
+  test.c
+  正在生成代码...
+  扫雷.vcxproj -> C:\Users\刘轩\Desktop\扫雷\x64\Debug\扫雷.exe
