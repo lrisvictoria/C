@@ -1,0 +1,4 @@
+﻿  test.c
+D:\Anduin_code\anduins-code-warehouse\比特上机递归\比特上机递归\test.c(1,1): warning C4828: 文件包含在偏移 0xba5 处开始的字符，该字符在当前源字符集中无效(代码页 936)。
+D:\Anduin_code\anduins-code-warehouse\比特上机递归\比特上机递归\test.c(144): warning C4715: “test”: 不是所有的控件路径都返回值
+  比特上机递归.vcxproj -> D:\Anduin_code\anduins-code-warehouse\比特上机递归\x64\Debug\比特上机递归.exe
