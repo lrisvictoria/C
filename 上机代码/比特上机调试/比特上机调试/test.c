@@ -33,18 +33,18 @@
 //	return 0;
 //}
 
-//int main()
-//{
-//	int i = 0;
-//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
-//	for (i = 0; i <= 12; i++)
-//	{
-//		arr[i] = 0;
-//		printf("hehe\n");
-//	}
-//
-//	return 0;
-//}
+int main()
+{
+	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+	int i = 0;
+	for (i = 0; i <= 12; i++)
+	{
+		arr[i] = 0;
+		printf("hehe\n");
+	}
+
+	return 0;
+}
 
 //查看调用逻辑
 //void test2()
@@ -73,15 +73,15 @@
 //}
 //debug版本会死循环，那么release呢？
 
-int main()
-{
-	int i = 0;
-	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
-	printf("%p\n", &i);
-	printf("%p\n", &arr[0]);
-	printf("%p\n", &arr[9]);
-	return 0;
-}
+//int main()
+//{
+//	int i = 0;
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	printf("%p\n", &i);
+//	printf("%p\n", &arr[0]);
+//	printf("%p\n", &arr[9]);
+//	return 0;
+//}
 
 //比如在以后工作时，测试人员测出来bug，可能我们这边没有bug
 //但是别怀疑，他们是对的，因为你们的版本不同
@@ -169,14 +169,14 @@ int main()
 //保护源数据，防止源数据被误操作
 //健壮性 - 鲁棒性 - robust
 
-int my_strlen(const char* str)
-{
-	assert(str);
-	int count = 0;
-	while (*str)
-	{
-		count++;
-		str++;
-	}
-	return count;
-}
+//int my_strlen(const char* str)
+//{
+//	assert(str);
+//	int count = 0;
+//	while (*str)
+//	{
+//		count++;
+//		str++;
+//	}
+//	return count;
+//}
