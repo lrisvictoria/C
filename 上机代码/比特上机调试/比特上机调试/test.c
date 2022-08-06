@@ -33,18 +33,18 @@
 //	return 0;
 //}
 
-int main()
-{
-	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
-	int i = 0;
-	for (i = 0; i <= 12; i++)
-	{
-		arr[i] = 0;
-		printf("hehe\n");
-	}
-
-	return 0;
-}
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int i = 0;
+//	for (i = 0; i <= 12; i++)
+//	{
+//		arr[i] = 0;
+//		printf("hehe\n");
+//	}
+//
+//	return 0;
+//}
 
 //查看调用逻辑
 //void test2()
@@ -180,3 +180,26 @@ int main()
 //	}
 //	return count;
 //}
+
+//7.编程常见的错误
+//编译型错误
+//int main()
+//{
+//	return 0
+//}
+//这时初学时会出现的问题，随着不断的提升，后期基本不会出现
+
+//链接型错误
+
+//extern int Add(int, int);
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	int ret = Add(a, b);
+//	printf("%d\n", ret);
+//	return 0;
+//}
+
+//运行时错误
+//
