@@ -73,16 +73,16 @@
 //一般来说，常量字符串通常在使用时看起来是字符串，但是实际上操作的是常量字符串的首地址，
 //所以这里比较的为首元素地址
 //但是因为不是同一块空间，首元素地址也就不同，所以arr和"abcdef"并不相等
-int main()
-{
-	char arr[] = "abcdef";
-	//char* p = "abcdef";
-	if (arr == "abcdef")
-	{
-		printf("yes\n");
-	}
-	return 0;
-}
+//int main()
+//{
+//	char arr[] = "abcdef";
+//	//char* p = "abcdef";
+//	if (arr == "abcdef")
+//	{
+//		printf("yes\n");
+//	}
+//	return 0;
+//}
 
 //指针数组
 //存放指针的数组
@@ -145,7 +145,7 @@ int main()
 
 
 //数组指针
-//
+
 
 //int main()
 //{
@@ -156,30 +156,26 @@ int main()
 //	char* pc = &ch;//字符指针 - 指向字符的指针，存放的是字符变量的地址
 //
 //	//数组指针 - 指向数组的指针
-//	
-//	
-//	int* p1[10];
 //	int(*p2)[10];
-//	
 //	
 //	return 0;
 //}
 
-//int main()
-//{
-//	int a = 10;
-//	int* p = &a;
-//
-//	int arr[10] = { 0 };
-//	//数组名是首元素地址
-//	printf("%p\n", arr);
-//	printf("%p\n", arr + 1);
-//	printf("%p\n", &arr[0]);
-//	printf("%p\n", &arr[0] + 1);
-//	printf("%p\n", &arr);
-//	printf("%p\n", &arr + 1);
-//	return 0;
-//}
+int main()
+{
+	int a = 10;
+	int* p = &a;
+
+	int arr[10] = { 0 };
+	//数组名是首元素地址
+	printf("%p\n", arr);
+	printf("%p\n", arr + 1);
+	printf("%p\n", &arr[0]);
+	printf("%p\n", &arr[0] + 1);
+	printf("%p\n", &arr);
+	printf("%p\n", &arr + 1);
+	return 0;
+}
 
 //要把指针数组放到数组指针中，下面该怎么放？
 //int main()
