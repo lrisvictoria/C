@@ -165,24 +165,40 @@ void reverse(char* left, char* right)
 //	}
 //	printf("%s\n", arr);
 //}
+//int main()
+//{
+//	char arr[1001] = { 0 };
+//	scanf("%[^\n]", arr);
+//	char* left = arr;
+//	char* right = arr + strlen(arr) - 1;
+//	reverse(left, right);
+//	char* str = arr;
+//	while (*str != '\0')
+//	{
+//		char* start = str;
+//		while (*str != ' ' && *str != '\0')
+//		{
+//			str++;
+//		}
+//		reverse(start, str - 1);
+//		//start = str + 1;
+//		str+=1;
+//	}
+//	printf("%s\n", arr);
+//}
+
+//µİ¹éĞ´·¨
+void print()
+{
+	char arr[101] = { 0 };
+	while (scanf("%s", arr) != EOF)
+	{
+		print();
+		printf("%s ", arr);
+	}
+}
 int main()
 {
-	char arr[1001] = { 0 };
-	scanf("%[^\n]", arr);
-	char* left = arr;
-	char* right = arr + strlen(arr) - 1;
-	reverse(left, right);
-	char* str = arr;
-	while (*str != '\0')
-	{
-		char* start = str;
-		while (*str != ' ' && *str != '\0')
-		{
-			str++;
-		}
-		reverse(start, str - 1);
-		//start = str + 1;
-		str+=1;
-	}
-	printf("%s\n", arr);
+	print();
+	return 0;
 }
