@@ -102,15 +102,63 @@
 //	return 0;
 //}
 
-//二维数组传整个数组的地址时，形参部分如何接收？
-void test(int(*p)[3][5])//指针指向一个三行五列的数组
+////二维数组传整个数组的地址时，形参部分如何接收？
+//void test(int(*p)[3][5])//指针指向一个三行五列的数组
+//{
+//	*p;//p为数组指针指向三行五列的二维数组
+//	//解引用应该拿到这个二维数组，而拿到二维数组只需要拿到首元素地址便可访问整个数组
+//	//所以说这里的*p实际上是首元素地址，也就是第一行的地址
+//}
+//int main()
+//{
+//	int arr[3][5];
+//	test(&arr);//传递整个二维数组的地址 - 不常见，麻烦
+//}
+
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int Sub(int x, int y)
+//{
+//	return x - y;
+//}
+//int main()
+//{
+//	//可以存放多个[参数相同返回类型相同]的函数的地址
+//	int (*pfArr[2])(int, int) = { Add,Sub };//把两个函数的地址放入函数指针数组
+//	int ret1 = pfArr[0](2, 3);//pfArr[0]下标访问，拿到Add函数的地址，调用这个函数
+//	int ret2 = pfArr[1](2, 3);//调用Sub函数
+//	int ret3 = (*(pfArr + 0))(2, 3);//pfArr为首元素地址，首元素地址+偏移量+解引用就拿到了数组中的元素
+//	int ret4 = (*pfArr)(2, 3);//也可以
+//	printf("%d\n%d\n%d\n", ret1, ret2, ret4);
+//	return 0;
+//}
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int main()
+//{
+//	int(*pf)(int x, int y) = &Add;
+//	int ret = (*pf)(3, 5);
+//	//*pf对指针解引用找到这个函数，再把3,5传给函数
+//	//int(*pf)(int x, int y) = Add;//这样也对
+//	int sum1 = Add(3, 5);
+//	int sum2 = pf(3, 5);
+//	printf("%d\n%d\n%d\n", ret, sum1, sum2);
+//	return 0;
+//}
+
+int Add(int x, int y)
 {
-	*p;//p为数组指针指向三行五列的二维数组
-	//解引用应该拿到这个二维数组，而拿到二维数组只需要拿到首元素地址便可访问整个数组
-	//所以说这里的*p实际上是首元素地址，也就是第一行的地址
+	return x + y;
 }
+
 int main()
 {
-	int arr[3][5];
-	test(&arr);//传递整个二维数组的地址 - 不常见，麻烦
+	int arr[10] = { 0 };
+	printf("%p\n", &arr);//取出数组的地址
+	printf("%p\n", &Add);//取出函数的地址
+	printf("%p\n", Add);//函数名，也是函数的地址
 }
