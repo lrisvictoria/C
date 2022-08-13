@@ -53,9 +53,6 @@
 //{
 //	return x + y;
 //}
-
-
-
 //int main()
 //{
 //	int(*pf)(int x, int y) = &Add;
@@ -88,6 +85,19 @@
 //	//这里加上*只不过让我们更好理解，对指针解引用找到指向的函数，说起来比较顺畅
 //}
 
+
+//int main()
+//{
+//	int(*pf)(int x, int y) = &Add;
+//	int ret = (*pf)(3, 5);
+//	//*pf对指针解引用找到这个函数，再把3,5传给函数
+//	//int(*pf)(int x, int y) = Add;//这样也对
+//	int sum1 = Add(3, 5);
+//	int sum2 = pf(3, 5);//运行一下
+//	printf("%d %d %d", ret, sum1, sum2);
+//	return 0;
+//}
+
 //测验一下，自己写个函数指针
 //int test(const char* str, double d)
 //{
@@ -110,14 +120,14 @@
 //把0强制类型转化成一个void(*)()类型的函数指针，然后去调用0地址处的函数
 //当然去掉最左边的*也可以调用
 //当然我们自己不要这么写，0地址处的我们不能访问，或者我们随便捏造一个地址，这个地址可能不是我们的
-//
+
 
 //void (*signal(int , void(*)(int)))(int);
 //我的理解：
 //;说明这是一个函数声明
 //函数名为signal，函数的第一个参数为int，第二个参数为int，返回类型为void的函数指针
 //函数signal的返回类型为函数指针，指针指向的函数，参数为int，返回类型为void
-
+//
 //鹏哥说的
 //上述代码是一次函数声明
 //声明的函数叫：signal
@@ -196,14 +206,86 @@
 //完成加减乘除
 
 //指向函数指针数组
-int main()
-{
-	//函数指针
-	int(*pf)(int, int);
-	//函数指针数组：
-	int(*pfArr[5])(int, int);
-	//指向函数指针数组的指针
-	int(*(*ptr)[5])(int, int) = &pfArr;
-	//ptr先和*结合，说明是一个指针，[]说明指向数组，数组5个元素，元素类型为int(*)(int, int)
-	return 0;
-}
+//int main()
+//{
+//	//函数指针
+//	int(*pf)(int, int);
+//	//函数指针数组：
+//	int(*pfArr[5])(int, int);
+//	//指向函数指针数组的指针
+//	int(*(*ptr)[5])(int, int) = &pfArr;
+//	//ptr先和*结合，说明是一个指针，[]说明指向数组，数组5个元素，元素类型为int(*)(int, int)
+//	return 0;
+//}
+
+//一级指针传参
+//#include<stdio.h>
+//void test(int* p, int sz)//一级指针接收
+//{
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", *(p + i));
+//	}
+//}
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int* p = arr;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	test(p, sz);
+//}
+//
+//当一个函数的参数部分为一级指针的时候，函数能接受什么参数？
+//void test(int* ptr)//明确知道形参为一级指针
+//{
+//	//...
+//}
+//int main()
+//{
+//	int a = 10;
+//	int* p = &a;
+//	int arr[] = { 1,2,3 };
+//	test(&a);//地址，妥
+//	test(p);//指针变量，妥
+//	test(arr);//数组名，首元素地址，妥
+//	return 0;
+//}
+
+// 二级指针传参
+//void test(char** ppc)//二级指针接收，仅有一种写法
+//{
+//
+//}
+//int main()
+//{
+//	char a = 'a';
+//	char* pa = &a;
+//	char** ppa = &pa;//ppa就是一个二级指针
+//	test(ppa);
+//	
+//	return 0;
+//}
+//
+//当一个函数的参数部分为二级指针，函数能接受什么参数？
+//void test(char** ppc)
+//{
+//	//...
+//}
+//int main()
+//{
+//	char ch = 'a';
+//	char* pc = &ch;
+//	char** ppc = &pc;
+//	char* arr[4];
+//	test(&pc);//取一级指针的地址，妥
+//	test(ppc);//传二级指针，妥
+//	test(arr);
+//	//arr是指针数组，数组4个元素，类型为char*，为一级指针
+//	//一级指针传参，在函数形参部分需要用二级指针接收，妥
+//
+//	char arr2[3][5];//ok?
+//	test(arr2);//err
+//
+//	return 0;
+//}
