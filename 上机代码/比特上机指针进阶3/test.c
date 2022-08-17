@@ -30,21 +30,21 @@
 //	}
 //}
 
-int cmp_int(const void* e1, const void* e2) //e1和e2为要比较两个元素的地址 
-{
-	return *(int*)e1 - *(int*)e2;//升序
-	//return *(int*)e2 - *(int*)e1;//降序
-}
-
-void print(int arr[], int sz)
-{
-	int i = 0;
-	for (i = 0; i < sz; i++)
-	{
-		printf("%d ", arr[i]);
-	}
-}
-//测试冒泡排序功能
+//int cmp_int(const void* e1, const void* e2) //e1和e2为要比较两个元素的地址 
+//{
+//	return *(int*)e1 - *(int*)e2;//升序
+//	//return *(int*)e2 - *(int*)e1;//降序
+//}
+//
+//void print(int arr[], int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//}
+////测试冒泡排序功能
 //void test1()
 //{
 //	int arr[] = { 2,1,3,7,5,9,6,8,0,4 };
@@ -52,105 +52,105 @@ void print(int arr[], int sz)
 //	bubbleSort(arr, sz);
 //	print(arr, sz);
 //}
-//测试qsort函数排序整形数据(可以看一下cpp)
-void test2()
-{
-	int arr[] = { 2,1,3,7,5,9,6,8,0,4 };
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	qsort(arr,sz,sizeof(arr[0]),cmp_int);
-	print(arr, sz);
-}
-
-struct stu
-{
-	char name[20];
-	int age;
-};
-//按名字升序排序
-int cmp_stu_by_name(const void* e1, const void* e2)
-{
-	return strcmp(((struct stu*)e1)->name , ((struct stu*)e2)->name);
-}
-//按年龄升序排序
-int cmp_stu_by_age(const void* e1, const void* e2)
-{
-	return ((struct stu*)e1)->age - ((struct stu*)e2)->age;
-}
-void print_stu(struct stu* p, int sz)
-{
-	int i = 0;
-	for (i = 0; i < sz; i++)
-	{
-		printf("%s %d\n",  (p+i)->name, (p+i)->age);
-	}
-}
-//测试qsort排序结构体数据
-void test3()
-{
-	struct stu s[] = { {"zhangsan",20},{"lisi",55},{"wangwu",40} };
-	//按照名字比较
-	int sz = sizeof(s) / sizeof(s[0]);
-	//qsort(s, sz, sizeof(s[0]), cmp_stu_by_name);
-	qsort(s, sz, sizeof(s[0]), cmp_stu_by_age);
-	print_stu(s, sz);
-}
-
-void swap(char* buf1, char* buf2, int width)
-{
-	int i = 0;
-	for (i = 0; i < width; i++)
-	{
-		char tmp = *buf1;
-		*buf1 = *buf2;
-		*buf2 = tmp;
-		buf1++;
-		buf2++;
-	}
-}
-//qsort模拟冒泡排序
-void bubbleSort2(void* base, int sz, int width, int (*cmp)(const void* e1, const void* e2))
-{
-	int i = 0;
-	//趟数
-	for (i = 0; i < sz - 1; i++)
-	{
-		//一趟冒泡排序的过程
-		int j = 0;
-		for (j = 0; j < sz - 1 - i; j++)
-		{
-			if (cmp((char*)base + j * width, (char*)base + (j + 1) * width) > 0)//把char*的指针传给void*的指针完全没问题
-			{
-				//交换
-				swap((char*)base + j * width, (char*)base + (j + 1) * width, width);
-			}
-		}
-	}
-}
-void test4()
-{
-	int arr[] = { 2,1,3,7,5,9,6,8,0,4 };
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	bubbleSort2(arr, sz, sizeof(arr[0]), cmp_int);
-	print(arr, sz);
-}
-void test5()
-{
-	struct stu s[] = { {"zhangsan",20},{"lisi",55},{"wangwu",40} };
-	//按照名字比较
-	int sz = sizeof(s) / sizeof(s[0]);
-	//qsort(s, sz, sizeof(s[0]), cmp_stu_by_name);
-	bubbleSort2(s, sz, sizeof(s[0]), cmp_stu_by_age);//冒泡排序测试，可行
-	print_stu(s, sz);
-}
-int main()
-{
-	//test1();
-	//test2();
-	//test3();
-	//test4();
-	test5();
-	return 0;
-}
+////测试qsort函数排序整形数据(可以看一下cpp)
+//void test2()
+//{
+//	int arr[] = { 2,1,3,7,5,9,6,8,0,4 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	qsort(arr,sz,sizeof(arr[0]),cmp_int);
+//	print(arr, sz);
+//}
+//
+//struct stu
+//{
+//	char name[20];
+//	int age;
+//};
+////按名字升序排序
+//int cmp_stu_by_name(const void* e1, const void* e2)
+//{
+//	return strcmp(((struct stu*)e1)->name , ((struct stu*)e2)->name);
+//}
+////按年龄升序排序
+//int cmp_stu_by_age(const void* e1, const void* e2)
+//{
+//	return ((struct stu*)e1)->age - ((struct stu*)e2)->age;
+//}
+//void print_stu(struct stu* p, int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%s %d\n",  (p+i)->name, (p+i)->age);
+//	}
+//}
+////测试qsort排序结构体数据
+//void test3()
+//{
+//	struct stu s[] = { {"zhangsan",20},{"lisi",55},{"wangwu",40} };
+//	//按照名字比较
+//	int sz = sizeof(s) / sizeof(s[0]);
+//	//qsort(s, sz, sizeof(s[0]), cmp_stu_by_name);
+//	qsort(s, sz, sizeof(s[0]), cmp_stu_by_age);
+//	print_stu(s, sz);
+//}
+//
+//void swap(char* buf1, char* buf2, int width)
+//{
+//	int i = 0;
+//	for (i = 0; i < width; i++)
+//	{
+//		char tmp = *buf1;
+//		*buf1 = *buf2;
+//		*buf2 = tmp;
+//		buf1++;
+//		buf2++;
+//	}
+//}
+////qsort模拟冒泡排序
+//void bubbleSort2(void* base, int sz, int width, int (*cmp)(const void* e1, const void* e2))
+//{
+//	int i = 0;
+//	//趟数
+//	for (i = 0; i < sz - 1; i++)
+//	{
+//		//一趟冒泡排序的过程
+//		int j = 0;
+//		for (j = 0; j < sz - 1 - i; j++)
+//		{
+//			if (cmp((char*)base + j * width, (char*)base + (j + 1) * width) > 0)//把char*的指针传给void*的指针完全没问题
+//			{
+//				//交换
+//				swap((char*)base + j * width, (char*)base + (j + 1) * width, width);
+//			}
+//		}
+//	}
+//}
+//void test4()
+//{
+//	int arr[] = { 2,1,3,7,5,9,6,8,0,4 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	bubbleSort2(arr, sz, sizeof(arr[0]), cmp_int);
+//	print(arr, sz);
+//}
+//void test5()
+//{
+//	struct stu s[] = { {"zhangsan",20},{"lisi",55},{"wangwu",40} };
+//	//按照名字比较
+//	int sz = sizeof(s) / sizeof(s[0]);
+//	//qsort(s, sz, sizeof(s[0]), cmp_stu_by_name);
+//	bubbleSort2(s, sz, sizeof(s[0]), cmp_stu_by_age);//冒泡排序测试，可行
+//	print_stu(s, sz);
+//}
+//int main()
+//{
+//	//test1();
+//	//test2();
+//	//test3();
+//	//test4();
+//	test5();
+//	return 0;
+//}
 
 //void qsort(void* base,//待排序数据的起始地址
 //		   size_t num,//待排序数据的元素个数
@@ -195,7 +195,7 @@ int main()
 //base为起始地址，bese起初是void*，无法进行+-整数运算，所以需要强制类型转化
 //j*width为字节数，而我们想要得到某处的地址，就只需要将base转化为char*
 //那么这样base+2*width就是跳过8个字节，也就是跳过两个整形，拿到了地址
-//
+
 
 
 //swap((char*)base + j * width, (char*)base + (j + 1) * width, width)；
@@ -215,3 +215,60 @@ int main()
 //bubbleSort2是采用冒泡排序的思想
 //借鉴了qsort的设计思想
 //设计了bubbleSort2，来实现对任意类型数据的排序
+
+
+#include<stdio.h>
+struct stu
+{
+	char name[20];
+	int age;
+};
+int cmp(const void* e1, const void* e2)
+{
+	return ((struct stu*)e1)->age - ((struct stu*)e2)->age;
+}
+void swap(char* buf1, char* buf2, int width)
+{
+	int i = 0;
+	for (i = 0; i < width; i++)//将width个字节
+	{
+		char* tmp = *buf1;
+		*buf1 = *buf2;
+		*buf2 = tmp;
+		buf1++;//指针向后调整
+		buf2++;
+	}
+}
+void bubbleSort(void* base, int sz, int width, int(*p)(const void* e1, const void* e2))
+{
+	int i = 0;
+	for (i = 0; i < sz - 1; i++)
+	{
+		int j = 0;
+		for (j = 0; j < sz - 1 - i; j++)
+		{
+			if (cmp((char*)base + j * width, (char*)base + (j + 1) * width) > 0)//升序
+			{
+				swap((char*)base + j * width, (char*)base + (j + 1) * width, width);
+			}
+		}
+	}
+}
+void print(struct stu* p, int sz)
+{
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%s %d ", (p + i)->name, (p + i)->age);
+	}
+	printf("\n");
+}
+int main()
+{
+	struct stu arr[] = { {"zhangsan",20},{"lisi",55},{"wangwu",40} };
+	//按照名字比较
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	bubbleSort(arr, sz, sizeof(arr[0]), cmp);
+	print(arr, sz);
+	return 0;
+}
