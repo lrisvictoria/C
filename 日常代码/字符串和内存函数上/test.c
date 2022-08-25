@@ -132,25 +132,90 @@
 //}
 
 //模拟实现实现strcat
-void my_strcat(char* dest, const char* src)
-{
-	assert(dest && src);
-	while (*dest)
-	{
-		dest++;
-	}
-	while (*src)
-	{
-		*dest++ = *src++;
-	}
-}
-int main()
-{
-	char arr1[20] = "hello";
-	char arr2[] = " bit";
+//char* my_strcat(char* dest, const char* src)
+//{
+//	assert(dest && src);
+//	char* ret = dest;
+//	//找目标空间的\0
+//	while (*dest)
+//	{
+//		dest++;
+//	}
+//	//拷贝
+//	while (*dest++ = *src++)
+//	{
+//		;
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	char arr1[20] = "hello";
+//	char arr2[] = " bit";
+//
+//	char* ret = my_strcat(arr1, arr2);
+//	printf("%s", ret);
+//	return 0;
+//	return 0;
+//}
 
-	my_strcat(arr1, arr2);
-	printf("%s", arr1);
-	return 0;
-	return 0;
-}
+//字符串自己给自己追加?
+
+//完全不可以，目标字符串在找到\0后，会使用源字符串在\0处对内容进行追加
+//源字符串结束的标准是找到\0
+//但是源字符串和目标字符串相同，原先\0的位置被覆盖成b
+//不会像别的字符串一样，可以找到\0
+//目标字符串指针总是比源字符串快
+//就会造成死循环
+
+
+//char* my_strcat(char* dest, const char* src)
+//{
+//	assert(dest && src);
+//	char* ret = dest;
+//	//找目标空间的\0
+//	while (*dest)
+//	{
+//		dest++;
+//	}
+//	//拷贝
+//	while (*dest++ = *src++)
+//	{
+//		;
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	char arr1[20] = "hello";
+//	char* ret = my_strcat(arr1, arr1);
+//	printf("%s", ret);//bitbit
+//	return 0;
+//}
+
+//但是使用库函数是可行的，我们无法知道它是如何实现和处理的
+//但是用我们相同的思路来实现strcat是不可行的，这只是一个参考代码，正确但不唯一
+
+//strcmp - 字符串比较
+//比较的不是字符串长度而是比较字符串中对应位置上字符的大小
+//如果相同比较下一对，否则继续，直到不同或都遇到\0
+
+
+//int my_strcmp(const char* e1, const char* e2)
+//{
+//	assert(e1 && e2);
+//	while (*e1 == *e2)
+//	{
+//		if (*e1 == '\0')
+//			return 0;//相等
+//		e1++;
+//		e2++;
+//	}
+//	//不相等
+//	/*if (*e1 > *e2)
+//		return 1;
+//	else 
+//		return 0;*/
+//	return *e1 - *e2;//更加简洁
+//}
+
