@@ -219,3 +219,122 @@
 //	return *e1 - *e2;//更加简洁
 //}
 
+//以上是长度不受限制的字符串函数!
+//在使用时可能会有风险，因为不能规定操作的字符个数
+
+
+//长度受限制的字符串函数
+
+//strncpy
+//char* my_strncpy(char* dest, const char* src, size_t count)
+//{
+//	assert(dest && src);
+//	char* start = dest;
+//
+//	while (count && (*dest++ = *src++) != '\0')//仍然会用\0覆盖
+//		count--;
+//	if (count)//处理操作长度大小>源字符串长度的情况
+//	{
+//		while (--count)//覆盖次数为count - 1次，因为上方\0已经被覆盖
+//		{
+//			*dest++ = '\0';
+//		}
+//	}
+//	return(start);
+//}
+//int main()
+//{
+//	char arr1[] = "abcdef";
+//	char arr2[] = "shi";
+//	size_t count = 0;
+//	scanf("%u", &count);
+//	char* ret = my_strncpy(arr1, arr2, count);//\0不算做字符串内容，统计的是\0之前出现的字符
+//	//strncpy(arr1, arr2, 6);
+//	printf("%s\n", ret);
+//	return 0;
+//}
+
+//如果源字符串的长度没有操作长度大
+//那么strncpy确实会操作操作长度大小的字符大小
+//不够的会用\0来填充
+
+//strncat
+//char* my_strncat(char* dest, char* src, size_t count)
+//{
+//	char* start = dest;
+//	while (*dest)//找目标字符串的\0
+//	{
+//		dest++;
+//	}
+//	while (count--)//count为真
+//		if ((*dest++ = *src++) == 0)//操作长度大于源字符串，不进行补\0，直接返回
+//			return(start);
+//
+//	*dest = '\0';//追加完毕没有返回，则手动加上\0,此时\0经过++指向操作字符后一个位置
+//	return(start);
+//}
+//int main()
+//{
+//	char arr1[20] = "abcdef";
+//	char arr2[] = "anduin";
+//	size_t count = 0;
+//	scanf("%zu", &count);
+//	char* ret = my_strncat(arr1, arr2, count);
+//	//strncat(arr1, arr2, 3);//3个为操作的字符数，其实是四个，还有一个\0
+//	//如果操作长度大于字符串长度
+//	//则只会追加字符串，其余不会操作
+//
+//	printf("%s\n", ret);
+//	/*printf("%s\n", arr1);*/
+//}
+
+//strncmp
+//int main()
+//{
+//	char arr1[] = "abcdef";
+//	char arr2[] = "abcdeq";
+//	int ret = strncmp(arr1, arr2, 4);
+//	printf("%d\n", ret);
+//	return 0;
+//}
+
+//strstr
+char* my_strstr(const char* str1, const char* str2)
+{
+	assert(str1 && str2);
+	const char* s1 = str1;
+	const char* s2 = str2;
+
+	const char* cur = str2;
+	while (*cur)
+	{
+		s1 = cur;
+		s2 = str2;
+		while (*s1 && *s2 && (*s1 == *s2))
+		{
+			s1++;
+			s2++;
+		}
+		if (*s2 == '\0')
+		{
+			return (char*)cur;
+		}
+		cur++;
+	}
+	return NULL;
+}
+int main()
+{
+	char arr1[] = "abcdeqabcdef0";
+	char arr2[] = "cdef";
+	char* ret = my_strstr(arr1, arr2);
+	if (NULL == ret)
+	{
+		printf("找不到子串\n");
+	}
+	else
+	{
+		printf("%s\n", ret);
+	}
+	return 0;
+}
