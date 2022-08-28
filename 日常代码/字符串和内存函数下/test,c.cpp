@@ -40,9 +40,13 @@ int main()
 	int* p = (int*)malloc(INT_MAX);//向堆区申请内存的，将其起始地址返回，类型是void，强制类型转换
 	if (p == NULL)//开辟空间失败返回空指针，malloc是库函数，调用失败会把错误码放到errno中
 	{
-		printf("%s\n", strerror(errno));//Not enough space
+		//printf("%s\n", strerror(errno));//Not enough space
+		perror("Malloc");//Malloc: Not enough space，通过提示信息加上分号，打印出错误信息
 		return 1;
 	}
 	//错误码是全局的，会被实时更新
 	return 0;
 }
+
+//perror - 打印错误信息
+//void perror( const char *string );
