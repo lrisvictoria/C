@@ -1,17 +1,21 @@
 #define _CRT_SECURE_NO_WARNINGS 1 
-#include<stdio.h>
-#include<string.h>
-#include<assert.h>
+//#include<stdio.h>
+//#include<string.h>
+//#include<assert.h>
 //int main()
 //{
-//	//char ch = 'a';//c语言有字符类型
-//	//"abcdef";//没有字符串类型
-//	//char arr[] = "abcdef";
-//	//strlen(arr);//string length，统计\0前的字符个数
+//	char ch = 'a';//c语言有字符类型
+//	"abcdef";//没有字符串类型
+//	char arr1[] = "abcdef";
+//	printf("%zu\n", strlen(arr1));//统计\0前的字符个数
 //
-//	//char arr[10] = {'a','b','c','d','e','f'};//6
-//	////不完全初始化，其余元素默认初始化为0，为\0的ascii码值
-//	//strlen(arr);
+//	char arr2[10] = {'a','b','c','d','e','f'};//6
+//	//不完全初始化，其余元素默认初始化为0，为\0的ascii码值
+//	printf("%zu\n", strlen(arr2));
+//
+//	char arr3[] = { 'a','b','c','d','e','f' };//随机值
+//	//没有\0
+//	printf("%zu\n", strlen(arr3));
 //
 //	//可能遇到的bug
 //	//strlen的返回类型为size_t
@@ -25,6 +29,8 @@
 //	}
 //
 //	//解决方案：强转或直接比大小
+//	//if ((int)strlen("abc") - (int)strlen("abcdef") > 0)
+//	//if (strlen("abc") > strlen("abcdef"))
 //}
 
 //模拟实现strlen
@@ -68,25 +74,43 @@
 
 //strcpy - 字符串拷贝
 #include<stdio.h>
-//char* my_strcpy(char* dest, const char* src)
-//{
-//	assert(dest && src);
-//	char* ret = dest;
-//	while (*dest++ = *src++);
-//	return ret;
-//}
+#include<assert.h>
+char* my_strcpy(char* dest, const char* src)
+{
+	assert(dest && src);
+	char* ret = dest;
+	while (*dest++ = *src++);
+	return ret;
+}
+int main()
+{
+	char arr1[20] = { 0 };
+	char arr2[] = "abcdef";
+	//char arr2[] = { 'a','b','c' };//崩溃
+	
+	//若没有\0就会一直往后找，程序会崩溃							  
+	//strcpy(arr1, arr2);
+	//会把\0也拷贝过去，所以字符串源字符串一定要有\0
+	
+	char* ret = my_strcpy(arr1, arr2);
+	printf("%s\n", ret);
+	return 0;
+
+	//若目标空间无法存放源字符串，程序就会奔溃
+}
+
 //int main()
 //{
 //	char arr1[20] = { 0 };
+//	//char* arr1 = "hello world";//奔溃
+//	//arr1指向的是常量字符串，常量是不可修改的
 //	char arr2[] = "abcdef";
-//	char arr2[] = { 'a','b','c' };//崩溃
-//	
-//	//若没有\0就会一直往后找，程序会崩溃							  
-//	//strcpy(arr1, arr2);
+//	//char arr2[] = { 'a','b','c' };//崩溃
+//	//若没有\0就会一直往后找，程序会崩溃
+//
+//	strcpy(arr1, arr2);
 //	//会把\0也拷贝过去，所以字符串源字符串一定要有\0
-//	
-//	char* ret = my_strcpy(arr1, arr2);
-//	printf("%s\n", ret);
+//	printf("%s\n", arr1);
 //	return 0;
 //
 //	//若目标空间无法存放源字符串，程序就会奔溃
@@ -299,42 +323,42 @@
 //}
 
 //strstr
-char* my_strstr(const char* str1, const char* str2)
-{
-	assert(str1 && str2);
-	const char* s1 = str1;
-	const char* s2 = str2;
-
-	const char* cur = str2;
-	while (*cur)
-	{
-		s1 = cur;
-		s2 = str2;
-		while (*s1 && *s2 && (*s1 == *s2))
-		{
-			s1++;
-			s2++;
-		}
-		if (*s2 == '\0')
-		{
-			return (char*)cur;
-		}
-		cur++;
-	}
-	return NULL;
-}
-int main()
-{
-	char arr1[] = "abcdeqabcdef0";
-	char arr2[] = "cdef";
-	char* ret = my_strstr(arr1, arr2);
-	if (NULL == ret)
-	{
-		printf("找不到子串\n");
-	}
-	else
-	{
-		printf("%s\n", ret);
-	}
-	return 0;
-}
+//char* my_strstr(const char* str1, const char* str2)
+//{
+//	assert(str1 && str2);
+//	const char* s1 = str1;
+//	const char* s2 = str2;
+//
+//	const char* cur = str2;
+//	while (*cur)
+//	{
+//		s1 = cur;
+//		s2 = str2;
+//		while (*s1 && *s2 && (*s1 == *s2))
+//		{
+//			s1++;
+//			s2++;
+//		}
+//		if (*s2 == '\0')
+//		{
+//			return (char*)cur;
+//		}
+//		cur++;
+//	}
+//	return NULL;
+//}
+//int main()
+//{
+//	char arr1[] = "abcdeqabcdef0";
+//	char arr2[] = "cdef";
+//	char* ret = my_strstr(arr1, arr2);
+//	if (NULL == ret)
+//	{
+//		printf("找不到子串\n");
+//	}
+//	else
+//	{
+//		printf("%s\n", ret);
+//	}
+//	return 0;
+//}
