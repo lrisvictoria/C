@@ -321,12 +321,27 @@
 //int main()
 //{
 //	char arr1[] = "abcdef";
-//	char arr2[] = "shi";
+//	char arr2[] = "anduin";
 //	size_t count = 0;
 //	scanf("%u", &count);
 //	char* ret = my_strncpy(arr1, arr2, count);//\0不算做字符串内容，统计的是\0之前出现的字符
+//	//strncpy(arr1, arr2, 3);
+//	//printf("%s\n", arr1);
 //	//strncpy(arr1, arr2, 6);
 //	printf("%s\n", ret);
+//	//printf("%s\n", arr1);
+//	return 0;
+//}
+
+//int main()
+//{
+//	char arr1[] = "abcdef";
+//	char arr2[] = "and";
+//	strncpy(arr1, arr2, 3);//拷贝三个字符
+//	printf("%s\n", arr1);
+//	strncpy(arr1, arr2, 6);//源字符串长度<操作长度
+//	//printf("%s\n", ret);
+//	printf("%s\n", arr1);
 //	return 0;
 //}
 
@@ -335,33 +350,46 @@
 //不够的会用\0来填充
 
 //strncat
-//char* my_strncat(char* dest, char* src, size_t count)
-//{
-//	char* start = dest;
-//	while (*dest)//找目标字符串的\0
-//	{
-//		dest++;
-//	}
-//	while (count--)//count为真
-//		if ((*dest++ = *src++) == 0)//操作长度大于源字符串，不进行补\0，直接返回
-//			return(start);
-//
-//	*dest = '\0';//追加完毕没有返回，则手动加上\0,此时\0经过++指向操作字符后一个位置
-//	return(start);
-//}
+char* my_strncat(char* dest, char* src, size_t count)
+{
+	char* start = dest;
+	while (*dest)//找目标字符串的\0
+	{
+		dest++;
+	}
+	while (count--)//count为真
+	{
+		if ((*dest++ = *src++) == 0)//操作长度大于源字符串，不进行补\0，直接返回
+			return(start);
+	}
+
+	*dest = '\0';//追加完毕没有返回，则手动加上\0,此时\0经过++指向操作字符后一个位置
+	return(start);
+}
+int main()
+{
+	char arr1[20] = "abcdef\0XXXXXXX";
+	char arr2[] = "and";
+	size_t count = 0;
+	scanf("%zu", &count);
+	char* ret = my_strncat(arr1, arr2, count);
+	//strncat(arr1, arr2, 6);//3个为操作的字符数，其实是四个，还有一个\0
+	//如果操作长度大于字符串长度
+	//则只会追加字符串，其余不会操作
+
+	printf("%s\n", ret);
+	//printf("%s\n", arr1);
+}
+
 //int main()
 //{
-//	char arr1[20] = "abcdef";
-//	char arr2[] = "anduin";
-//	size_t count = 0;
-//	scanf("%zu", &count);
-//	char* ret = my_strncat(arr1, arr2, count);
-//	//strncat(arr1, arr2, 3);//3个为操作的字符数，其实是四个，还有一个\0
+//	char arr1[20] = "abcdef\0XXXXXXX";
+//	char arr2[] = "and";
+//	strncat(arr1, arr2, 6);
 //	//如果操作长度大于字符串长度
 //	//则只会追加字符串，其余不会操作
-//
-//	printf("%s\n", ret);
-//	/*printf("%s\n", arr1);*/
+//	//在这种情况下，在追加的末尾加上\0
+//	printf("%s\n", arr1);
 //}
 
 //strncmp
@@ -375,42 +403,42 @@
 //}
 
 //strstr
-char* my_strstr(const char* str1, const char* str2)
-{
-	assert(str1 && str2);
-	const char* s1 = str1;
-	const char* s2 = str2;
-
-	const char* cur = str2;
-	while (*cur)
-	{
-		s1 = cur;
-		s2 = str2;
-		while (*s1 && *s2 && (*s1 == *s2))
-		{
-			s1++;
-			s2++;
-		}
-		if (*s2 == '\0')
-		{
-			return (char*)cur;
-		}
-		cur++;
-	}
-	return NULL;
-}
-int main()
-{
-	char arr1[] = "abcdeqabcdef0";
-	char arr2[] = "cdef";
-	char* ret = strstr(arr1, arr2);
-	if (NULL == ret)
-	{
-		printf("找不到子串\n");
-	}
-	else
-	{
-		printf("%s\n", ret);
-	}
-	return 0;
-}
+//char* my_strstr(const char* str1, const char* str2)
+//{
+//	assert(str1 && str2);
+//	const char* s1 = str1;
+//	const char* s2 = str2;
+//
+//	const char* cur = str2;
+//	while (*cur)
+//	{
+//		s1 = cur;
+//		s2 = str2;
+//		while (*s1 && *s2 && (*s1 == *s2))
+//		{
+//			s1++;
+//			s2++;
+//		}
+//		if (*s2 == '\0')
+//		{
+//			return (char*)cur;
+//		}
+//		cur++;
+//	}
+//	return NULL;
+//}
+//int main()
+//{
+//	char arr1[] = "abcdeqabcdef0";
+//	char arr2[] = "cdef";
+//	char* ret = strstr(arr1, arr2);
+//	if (NULL == ret)
+//	{
+//		printf("找不到子串\n");
+//	}
+//	else
+//	{
+//		printf("%s\n", ret);
+//	}
+//	return 0;
+//}
