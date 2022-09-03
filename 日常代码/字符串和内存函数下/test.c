@@ -35,18 +35,26 @@
 //#include <limits.h>
 //int main()
 //{
-//	/*printf("%s\n", strerror(0));
-//	printf("%s\n", strerror(1));
-//	printf("%s\n", strerror(2));
-//	printf("%s\n", strerror(3));*/
-//	int* p = (int*)malloc(INT_MAX);//向堆区申请内存的，将其起始地址返回，类型是void，强制类型转换
-//	if (p == NULL)//开辟空间失败返回空指针，malloc是库函数，调用失败会把错误码放到errno中
+//	int* p = (int*)malloc(INT_MAX);
+//	if (p == NULL)
 //	{
-//		//printf("%s\n", strerror(errno));//Not enough space
 //		perror("Malloc");//Malloc: Not enough space，通过提示信息加上分号，打印出错误信息
+//		perror("");
 //		return 1;
 //	}
-//	//错误码是全局的，会被实时更新
+//	return 0;
+//}
+//int main()
+//{
+//	printf("%s\n", strerror(0));
+//	printf("%s\n", strerror(1));
+//	printf("%s\n", strerror(2));
+//	printf("%s\n", strerror(3));
+//	int* p = (int*)malloc(INT_MAX);
+//	if (p == NULL)
+//	{
+//		printf("%s\n", strerror(errno));//Not enough space	
+//	}
 //	return 0;
 //}
 
@@ -294,23 +302,23 @@
 //void* memset(void* dest, int c, size_t count);
 
 //模拟实现memset
-#include <assert.h>
-void* my_memset(void* dest, int c, size_t count)
-{
-	assert(dest);
-	void* ret = dest;
-	while (count--)
-	{
-		*(char*)dest = c;
-		dest = (char*)dest + 1;
-	}
-	return ret;
-}
-
-int main()
-{
-	int arr1[] = { 1,2,3,4,5 };
-	my_memset(arr1, 1, 20); //memset是以字节为单位来初始化内存单元的
-	//memset能接受的数据的最大值为ff，也就是一个字节的最大数据
-	return 0;
-}
+//#include <assert.h>
+//void* my_memset(void* dest, int c, size_t count)
+//{
+//	assert(dest);
+//	void* ret = dest;
+//	while (count--)
+//	{
+//		*(char*)dest = c;
+//		dest = (char*)dest + 1;
+//	}
+//	return ret;
+//}
+//
+//int main()
+//{
+//	int arr1[] = { 1,2,3,4,5 };
+//	my_memset(arr1, 1, 20); //memset是以字节为单位来初始化内存单元的
+//	//memset能接受的数据的最大值为ff，也就是一个字节的最大数据
+//	return 0;
+//}
