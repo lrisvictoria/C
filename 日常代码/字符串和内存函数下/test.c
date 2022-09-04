@@ -159,19 +159,45 @@
 //}
 //int main()
 //{
+//	int arr1[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int arr2[5] = { 0 };
+//
+//	my_memcpy(arr1, arr2, 20);
+//
 //	/*int arr1[10] = { 1,2,3,4,5,6,7,8,9,10 };
-//	int arr2[5] = { 0 };*/
 //
-//	/*my_memcpy(arr2, arr1, 20);*/
+//	my_memcpy(arr1 + 2, arr1, 20);*/
 //
+//	for (int i = 0; i < 10; i++)
+//	{
+//		//printf("%d ", arr2[i]);
+//		printf("%d ", arr1[i]);//1 2 1 2 1 2 1 8 9 10
+//	}
+//	return 0;
+//}
+
+//#include <assert.h>
+//void* my_memcpy(void* dest, const void* src, size_t count)
+//{
+//	assert(dest && src);
+//	void* ret = dest;
+//	while (count--)
+//	{
+//		*(char*)dest = *(char*)src;
+//		dest = (char*)dest + 1;
+//		src = (char*)src + 1;
+//	}
+//	return ret;
+//}
+//int main()
+//{
 //	int arr1[10] = { 1,2,3,4,5,6,7,8,9,10 };
 //
 //	my_memcpy(arr1 + 2, arr1, 20);
 //
 //	for (int i = 0; i < 10; i++)
 //	{
-//		//printf("%d ", arr2[i]);
-//		printf("%d ", arr1[i]);//1 2 1 2 1 2 1 8 9 10
+//		printf("%d ", arr1[i]);
 //	}
 //	return 0;
 //}
@@ -183,44 +209,15 @@
 //memmove
 
 //模拟实现memmove - 重叠和不重叠的都能搞定
-//#include <assert.h>
-//
+#include <assert.h>
+
 //void* my_memmove(void* dest, const void* src, size_t count)
 //{
 //	assert(dest && src);
 //	void* ret = dest;
 //	//1
 //	//左边采用从前向后拷贝的方式，中间和右边采用从后向前拷贝的方式
-//	//if (dest < src)
-//	//{
-//	//	//从前向后
-//	//	while (count--)
-//	//	{
-//	//		*((char*)dest) = *((char*)src);
-//	//		dest = (char*)dest + 1;
-//	//		src = (char*)src + 1;
-//	//	}
-//	//}
-//	//else
-//	//{
-//	//	//从后向前 
-//	//	while (count--)
-//	//	{
-//	//		*((char*)dest + count) = *((char*)src + count);
-//	//	}
-//	//}
-//	
-//	//2
-//	//左边和右间采用从前向后拷贝的方式，中间采用从后向前拷贝的方式
-//	if (dest > src && dest < ((char*)src + count))
-//	{
-//		//从后向前
-//		while (count--)
-//		{
-//			*((char*)dest + count) = *((char*)src + count);
-//		}
-//	}
-//	else
+//	if (dest < src)
 //	{
 //		//从前向后
 //		while (count--)
@@ -230,6 +227,36 @@
 //			src = (char*)src + 1;
 //		}
 //	}
+//	else
+//	{
+//		//从后向前 
+//		while (count--)
+//		{
+//			*((char*)dest + count) = *((char*)src + count);
+//			//从最后元素的最后一个字节开始向前拷贝，count会不断调整
+//		}
+//	}
+//	
+//	//2
+//	//左边和右间采用从前向后拷贝的方式，中间采用从后向前拷贝的方式
+//	//if (dest > src && dest < ((char*)src + count))
+//	//{
+//	//	//从后向前
+//	//	while (count--)
+//	//	{
+//	//		*((char*)dest + count) = *((char*)src + count);
+//	//	}
+//	//}
+//	//else
+//	//{
+//	//	//从前向后
+//	//	while (count--)
+//	//	{
+//	//		*((char*)dest) = *((char*)src);
+//	//		dest = (char*)dest + 1;
+//	//		src = (char*)src + 1;
+//	//	}
+//	//}
 //
 //	return ret;
 //}
@@ -238,7 +265,7 @@
 //{
 //	int arr1[10] = { 1,2,3,4,5,6,7,8,9, 10 };
 //	//从前往后拷贝或者从后向前拷贝
-//	memmove(arr1 + 2, arr1, 20);//可以实现重叠内存的拷贝
+//	my_memmove(arr1 + 2, arr1, 20);//可以实现重叠内存的拷贝
 //	//memmove(arr1, arr1 + 2, 20);
 //	int i = 0;
 //	int sz = sizeof(arr1) / sizeof(arr1[0]);
@@ -260,6 +287,20 @@
 //并且实际上在vs中其实把memcpy进行了优化
 //我们模拟实现的memcpy不能实现的相同内存的拷贝
 //使用库里的可以实现
+
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	
+//	memcpy(arr, arr + 2, 20);
+//
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	for (int i = 0; i < sz; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
 
 //memcmp - 比较内存中数据的大小
 //>0 返回>0的数据
@@ -291,9 +332,9 @@
 //	int arr1[] = { 1,2,3,4,5 };
 //	int arr2[] = { 1,2,3,4,0x11223305 };
 //
-//	int ret = my_memcmp(arr1, arr2, 16);
-//	
+//	int ret = my_memcmp(arr1, arr2, 17);
 //	printf("%d\n", ret);
+//
 //	return 0;
 //}
 
@@ -302,23 +343,40 @@
 //void* memset(void* dest, int c, size_t count);
 
 //模拟实现memset
-//#include <assert.h>
-//void* my_memset(void* dest, int c, size_t count)
-//{
-//	assert(dest);
-//	void* ret = dest;
-//	while (count--)
-//	{
-//		*(char*)dest = c;
-//		dest = (char*)dest + 1;
-//	}
-//	return ret;
-//}
-//
+#include <assert.h>
+void* my_memset(void* dest, int c, size_t count)
+{
+	assert(dest);
+	void* ret = dest;
+	while (count--)
+	{
+		*(char*)dest = c;
+		dest = (char*)dest + 1;
+	}
+	return ret;
+}
+
+int main()
+{
+	int arr[] = { 1,2,3,4,5 };
+	my_memset(arr, 1, 20); //memset是以字节为单位来初始化内存单元的
+	//memset能接受的数据的最大值为ff，也就是一个字节的最大数据
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	    for (int i = 0; i < sz; i++)
+	    {
+	        printf("%d ", arr[i]);
+	    }
+	return 0;
+}
+
 //int main()
 //{
-//	int arr1[] = { 1,2,3,4,5 };
-//	my_memset(arr1, 1, 20); //memset是以字节为单位来初始化内存单元的
-//	//memset能接受的数据的最大值为ff，也就是一个字节的最大数据
-//	return 0;
+//    int arr[] = { 1,2,3,4,5 };
+//    memset(arr, 1, 20);
+//    int sz = sizeof(arr) / sizeof(arr[0]);
+//    for (int i = 0; i < sz; i++)
+//    {
+//        printf("%d ", arr[i]);
+//    }
+//    return 0;
 //}
