@@ -350,36 +350,36 @@
 //不够的会用\0来填充
 
 //strncat
-char* my_strncat(char* dest, char* src, size_t count)
-{
-	char* start = dest;
-	while (*dest)//找目标字符串的\0
-	{
-		dest++;
-	}
-	while (count--)//count为真
-	{
-		if ((*dest++ = *src++) == 0)//操作长度大于源字符串，不进行补\0，直接返回
-			return(start);
-	}
-
-	*dest = '\0';//追加完毕没有返回，则手动加上\0,此时\0经过++指向操作字符后一个位置
-	return(start);
-}
-int main()
-{
-	char arr1[20] = "abcdef\0XXXXXXX";
-	char arr2[] = "and";
-	size_t count = 0;
-	scanf("%zu", &count);
-	char* ret = my_strncat(arr1, arr2, count);
-	//strncat(arr1, arr2, 6);//3个为操作的字符数，其实是四个，还有一个\0
-	//如果操作长度大于字符串长度
-	//则只会追加字符串，其余不会操作
-
-	printf("%s\n", ret);
-	//printf("%s\n", arr1);
-}
+//char* my_strncat(char* dest, char* src, size_t count)
+//{
+//	char* start = dest;
+//	while (*dest)//找目标字符串的\0
+//	{
+//		dest++;
+//	}
+//	while (count--)//count为真
+//	{
+//		if ((*dest++ = *src++) == 0)//操作长度大于源字符串，不进行补\0，直接返回
+//			return(start);
+//	}
+//
+//	*dest = '\0';//追加完毕没有返回，则手动加上\0,此时\0经过++指向操作字符后一个位置
+//	return(start);
+//}
+//int main()
+//{
+//	char arr1[20] = "abcdef\0XXXXXXX";
+//	char arr2[] = "and";
+//	size_t count = 0;
+//	scanf("%zu", &count);
+//	char* ret = my_strncat(arr1, arr2, count);
+//	//strncat(arr1, arr2, 6);//3个为操作的字符数，其实是四个，还有一个\0
+//	//如果操作长度大于字符串长度
+//	//则只会追加字符串，其余不会操作
+//
+//	printf("%s\n", ret);
+//	//printf("%s\n", arr1);
+//}
 
 //int main()
 //{
@@ -392,15 +392,6 @@ int main()
 //	printf("%s\n", arr1);
 //}
 
-//strncmp
-//int main()
-//{
-//	char arr1[] = "abcdef";
-//	char arr2[] = "abcdeq";
-//	int ret = strncmp(arr1, arr2, 4);
-//	printf("%d\n", ret);
-//	return 0;
-//}
 
 //strstr
 //char* my_strstr(const char* str1, const char* str2)
