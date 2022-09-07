@@ -148,6 +148,7 @@
 //	//printf("%d\n", strlen(*arr));//err arr是数组名，*arr就是首元素，就是a，是97，把97传给了strlen，
 //	//strlen就把字符a的ascii码值，就把97当成了地址，这块空间是不允许我们访问的，一旦访问程序会奔溃
 //	//err 会非法访问内存
+//  //这个地址是不能随便访问的，只有当它分配给你时，才能访问
 //
 //	//printf("%d\n", strlen(arr[1]));//err arr[1] - 'b' - 98 
 //	printf("%d\n", strlen(&arr));//随机值 &arr取出的是数组的地址，因为strlen会把指针类型转换为char*
@@ -189,28 +190,70 @@
 //	return 0;
 //}
 
-#include <string.h>
-int main()
-{
-	char arr[] = "abcdef";
-
-	printf("%d\n", strlen(arr));//6
-	printf("%d\n", strlen(arr + 0));//6
-	//printf("%d\n", strlen(*arr));//err
-	//printf("%d\n", strlen(arr[1]));//err
-	printf("%d\n", strlen(&arr));//6
-	printf("%d\n", strlen(&arr + 1));//随机值，&arr+1跳向了\0后面
-	printf("%d\n", strlen(&arr[0] + 1));//5
-
-	return 0;
-}
+//#include <string.h>
+//int main()
+//{
+//	char arr[] = "abcdef";
+//
+//	printf("%d\n", strlen(arr));//6 计算的是\0之前字符出现的个数
+//	printf("%d\n", strlen(arr + 0));//6 arr没有单独放在sizeof内部，为首元素地址，+0也是首元素地址
+//	//printf("%d\n", strlen(*arr));//err *arr是首元素，strlen非法访问内存
+//	//printf("%d\n", strlen(arr[1]));//err 同上
+//	printf("%d\n", strlen(&arr));//6
+//	printf("%d\n", strlen(&arr + 1));//随机值，&arr+1跳向了\0后面
+//	printf("%d\n", strlen(&arr[0] + 1));//5
+//
+//	return 0;
+//}
 
 //strlen(&arr)
 //strlen返回值类型是size_t，参数类型是const char* str
 //&arr - char (*) [7]
 //实参传给strlen，会进行类型转换，会被转换为const char*
 //所以数组指针传给strlen能接受，且会类型转换，这也是为什么把数组指针传给strlen，会算出和arr一样的结果的原因
-//步长减小了
+//类型改变了，步长减小了
 //就比如：
 //char ch = 'w';
 //int* pc = &ch;
+
+int main()
+{
+	const char* p = "abcdef";//加上const提高健壮性，常量字符串不能被修改
+	
+	//printf("%d\n", sizeof(p));//4/8 p是指针，存放的是首元素的地址
+	//printf("%d\n", sizeof(p + 1));//4/8 p+1为第二个元素的地址
+	//printf("%d\n", sizeof(*p));//1 
+	//printf("%d\n", sizeof(*p + 1));//4 p是首元素地址，*p就是首元素，*p+1是表达式
+	////*p和整形1计算，需要发生整形提升，char整形提升为int，*p为字符a，ascii码值为97
+	////97 + 1 = 98，类型为int，所以这里相当于计算的是整型变量的大小，*p+1的类型为int
+	//printf("%d\n", sizeof(p[0]));//1 第一个元素
+	////p[0] <--> *(p + 0) <--> *p
+	////int arr[10];
+	////int* p = arr; arr[0] <--> p[0] <--> *(p + 0) <--> *(arr + 0)
+	//printf("%d\n", sizeof(&p));//4/8  &p取出的是p的地址，但是p的地址也是地址，大小为4/8个字节
+	//printf("%d\n", sizeof(&p + 1));//4/8 &p + 1指向p的后方
+	//printf("%d\n", sizeof(&p[0] + 1));//4/8 &p[0] + 1计算的是b的地址
+
+	//注意这里p并不是指针数组，而是指针变量，+1不是跳过一个数组，而是跳过一个p
+	//&p为取出p的地址，p为一级指针，&p就是二级指针，类型为char**
+	//+1跳过一个char*，可以类比于int* p = &a;p + 1跳过一个整形，&a + 1也应该跳过一个整形
+	//那么&p + 1就是跳过一个char*
+	
+
+	printf("%d\n", strlen(p));//6 计算\0之前出现的字符个数
+	printf("%d\n", strlen(p + 1));//5 从第二个元素的地址开始计算
+	//printf("%d\n", strlen(*p));//err *p - a - '97'
+	//printf("%d\n", strlen(p[0]));//err p[0] - a - '97'
+	printf("%d\n", strlen(&p));//随机值 p的地址是一块无法知道的空间，不知道后面什么时候出现\0
+	printf("%d\n", strlen(&p + 1));//随机值 &p + 1跳过一个p后的位置
+	//&p和&p+1的随机值并没有关联，因为他们之间的距离为4个字节，在四个字节中，可能就存在着\0
+	//所以它们并没有直接的联系
+	//比如0x00121133 00就是\0
+	printf("%d\n", strlen(&p[0] + 1));
+
+	return 0;
+}
+
+//系统中有一块空间是留给操作系统的
+//我们是不能访问的，如果访问，那么不就可以对这些数据进行篡改了吗
+//
