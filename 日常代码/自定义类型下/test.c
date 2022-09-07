@@ -73,13 +73,27 @@
 //修改默认对齐数
 //vs上默认对齐数是8
 
-struct S
-{
-	char c;
-	double d; 
-};
-int main()
-{
-	struct S s;
-	return 0;
-}
+
+#pragma pack(4)//默认对齐数被设置为4
+//#pragma pack(0)//默认对齐数被设置为1
+//相当于没有对齐数，此时struct S大小为9
+
+//注意：虽然支持这样修改默认对齐数，
+//但是也不要胡乱修改，一般默认对齐数修改为2^n
+//机器在读取时，读取的字长为4/8个字节，
+//尽量朝着适合读写的方法来设定
+//struct S
+//{
+//	char c;
+//	double d; 
+//};
+//#pragma pack()
+//
+//int main()
+//{
+//	struct S s;
+//	printf("%d\n", sizeof(struct S));
+//	return 0;
+//}
+
+//位段
