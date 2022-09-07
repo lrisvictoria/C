@@ -153,15 +153,49 @@
 //	return 0;
 //}
 
+//int main()
+//{
+//	int arr[3][4] = { 0 };
+//	printf("%p\n", arr[0]);//二维数组首元素，单独使用为第一行第一个元素地址
+//	printf("%p\n", arr[0] + 1);
+//	printf("%p\n", &arr[0][0]);//第一行第一个元素地址
+//	printf("%p\n", &arr[0][0]+1);
+//	printf("%p\n", arr);//二维数组首元素地址
+//	printf("%p\n", arr + 1);
+//	printf("%p\n", &arr);//二维数组的地址
+//	printf("%p\n", &arr + 1);
+//}
+
+//int main()
+//{
+//	const char* p = "abcdef";//加上const提高健壮性，常量字符串不能被修改
+//	printf("%d\n", sizeof(p));//4/8 
+//	printf("%d\n", sizeof(p + 1));//4/8
+//	printf("%d\n", sizeof(*p));//1 
+//	printf("%d\n", sizeof(p[0]));//1 
+//	printf("%d\n", sizeof(&p));//4/8 
+//	printf("%d\n", sizeof(&p + 1));//4/8 
+//	printf("%d\n", sizeof(&p[0] + 1));//4/8 
+//	printf("%d\n", sizeof(*p + 1));//4
+//
+//	return 0;
+//}
+
 int main()
 {
-	int arr[3][4] = { 0 };
-	printf("%p\n", arr[0]);//二维数组首元素，单独使用为第一行第一个元素地址
-	printf("%p\n", arr[0] + 1);
-	printf("%p\n", &arr[0][0]);//第一行第一个元素地址
-	printf("%p\n", &arr[0][0]+1);
-	printf("%p\n", arr);//二维数组首元素地址
-	printf("%p\n", arr + 1);
-	printf("%p\n", &arr);//二维数组的地址
-	printf("%p\n", &arr + 1);
+	//一维数组
+	int a[] = { 1,2,3,4 };
+	printf("%d\n", sizeof(a));//4*4 = 16
+	printf("%d\n", sizeof(a + 0));//4/8
+	printf("%d\n", sizeof(*a));//4
+	printf("%d\n", sizeof(a + 1));//4/8 
+	printf("%d\n", sizeof(a[1]));//4
+	printf("%d\n", sizeof(&a));//4/8 
+	printf("%d\n", sizeof(*&a));//16 
+	printf("%d\n", sizeof(&a + 1));//4/8 
+	printf("%d\n", sizeof(&a[0]));//4/8 
+	printf("%d\n", sizeof(&a[0] + 1));//4/8 
+	printf("%d\n", sizeof(&*a));//4/8
+
+	return 0;
 }
