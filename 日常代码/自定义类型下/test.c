@@ -97,3 +97,32 @@
 //}
 
 //位段
+//位段的成员必须是int，unsigned int，signed int，char
+struct AA
+{
+	int _a;
+	int _b;
+	int _c;
+	int _d;
+};
+//对于_a的解释
+//_a只占两个比特位，说明_a的取值范围为0~3
+//两个比特位可能情况：
+//00 01 10 11
+// 0  1  2  3
+//只要它的前面没有数字，取值范围在这个范围，就可以使用位段
+//
+struct A
+{
+	int _a : 2;//_a这个成员只占2个bit位
+	int _b : 5;//_b这个成员只占5个bit位
+	int _c : 10;
+	int _d : 30;
+};
+
+int main()
+{
+	printf("%d\n", sizeof(struct A));//8
+	printf("%d\n", sizeof(struct AA));//16，四个整形，默认对齐数是8，16个字节
+	return 0;
+}
