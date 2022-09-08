@@ -111,18 +111,27 @@ struct AA
 //00 01 10 11
 // 0  1  2  3
 //只要它的前面没有数字，取值范围在这个范围，就可以使用位段
-//
-struct A
-{
-	int _a : 2;//_a这个成员只占2个bit位
-	int _b : 5;//_b这个成员只占5个bit位
-	int _c : 10;
-	int _d : 30;
-};
 
+
+//位段不存在内存对齐
+//struct A
+//{
+//	int _a : 2;//_a这个成员只占2个bit位
+//	int _b : 5;//_b这个成员只占5个bit位
+//	int _c : 10;
+//	int _d : 30;
+//};
+//
+//int main()
+//{
+//	printf("%d\n", sizeof(struct A));//8
+//	printf("%d\n", sizeof(struct AA));//16，四个整形，默认对齐数是8，16个字节
+//	return 0;
+//}
+
+//位段的内存分配
 int main()
 {
-	printf("%d\n", sizeof(struct A));//8
-	printf("%d\n", sizeof(struct AA));//16，四个整形，默认对齐数是8，16个字节
+
 	return 0;
 }
