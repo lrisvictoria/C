@@ -130,8 +130,92 @@ struct AA
 //}
 
 //位段的内存分配
+//struct S
+//{
+//	char a : 3;
+//	char b : 4;
+//	char c : 5;
+//	char d : 4;
+//};
+////16位机器 - sizeof(int) - 2
+////32/64位机器 - sizeof(int) - 4
+////位段中最大位的数目不能确定
+////比如_d的成员大小为30个字节，对于16位机器，是不是过于大了？
+////这就是原因
+//int main()
+//{
+//	struct S s = { 0 };
+//	printf("%d\n", sizeof(s));
+//	//赋值
+//	s.a = 10;
+//	s.b = 12;
+//	s.c = 3;
+//	s.d = 4;
+//	return 0;
+//} 
+ 
+//enum Sex
+//{
+//	MALE,
+//	FEMALE,
+//	SECRET
+//};
+//
+//enum Day
+//{
+//	Mon,
+//	Tues,
+//	Wed,
+//	Thur,
+//	Fri,
+//	Sat,
+//	Sun
+//};
+//
+//enum Color
+//{
+//	RED = 5 ,
+//	GREEN = 8,
+//	BLUE
+//};
+//
+////枚举的值都是有值的
+////枚举默认开始为0，且后续元素呈+1式递增
+////且元素可被初始化，后续常量元素的值取决于前一个元素 
+//
+////枚举常量可被初始化，但是仅在类型中，如果后续修改，则会失败
+//int main()
+//{
+//	printf("%d\n", RED);
+//	printf("%d\n", GREEN);
+//	printf("%d\n", BLUE);
+//
+//	enum Sex s = MALE;
+//	enum Sex s2 = FEMALE;
+//	enum Day d = Fri;
+//	enum Color c = RED;
+//
+//	return 0;
+//}
+
+//********枚举的优点
+
+//#define可以定义常量，那么为什么还要用枚举
+
+//#define RED 5
+
+//5的可读性肯定没有RED高
+//因为枚举可以让5多一层含义，让它更容易被理解
+
+//2.#define定义后的RED变为标识符，在预处理阶段就会把它改成5
+//枚举是一种类型，它是具有类型检查的
+//而C语言的类型检查并不严格
+
 int main()
 {
-
+	enum Color c = 5;//把RED(5)把c给赋值为RED，在c语言中是可以的
+	//但是在C++中是不行的，因为c的类型是枚举类型，应该用枚举类型的值赋给c
+	//这时采用这种写法
+	//enum Color c = RED;
 	return 0;
 }
