@@ -211,6 +211,7 @@ struct AA
 //枚举是一种类型，它是具有类型检查的
 //而C语言的类型检查并不严格
 
+
 int main()
 {
 	enum Color c = 5;//把RED(5)把c给赋值为RED，在c语言中是可以的
