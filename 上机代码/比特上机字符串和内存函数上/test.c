@@ -48,9 +48,10 @@
 int my_strncmp(char* str1, char* str2, size_t count)
 {
 	assert(str1 && str2);
-	while (!((*str1 - *str2)) && *str1 && *str2 && --count)//如果两者相等且不为'\0',并且只操作count个数，
+	while (!((*str1 - *str2)) && *str1 && *str2 && --count)
+	//如果两者相等且不为'\0',并且只操作count个数，
 	//这里需要前置--，如果使用后置--，那么还会多进入一次循环，导致count多执行一次
-	//无序进行特殊处理，当前情况直接返回即可
+	//前置--，无需进行特殊处理，当前情况直接返回即可
 	{
 		str1++;
 		str2++;
@@ -61,7 +62,7 @@ int main()
 {
 	char arr1[] = "abcd";
 	char arr2[] = "abcq";
-	int ret = my_strncmp(arr1, arr2, 3);
+	int ret = my_strncmp(arr1, arr2, 4);
 
 	if (ret > 0)
 	{
