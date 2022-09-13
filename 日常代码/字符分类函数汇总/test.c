@@ -135,15 +135,41 @@
 //	return 0;
 //}
 
+//int main()
+//{
+//	int ret = isprint('a');//×ÖÄ¸
+//	printf("%d\n", ret);
+//	ret = isprint(' ');//¿Õ°××Ö·û
+//	printf("%d\n", ret);
+//	ret = isprint(',');//±êµã·ûºÅ
+//	printf("%d\n", ret);
+//	ret = isprint(1);//²»¿É¼û×Ö·û
+//	printf("%d\n", ret);
+//	return 0;
+//}
+
+//int main()
+//{
+//	char ch1 = '1';
+//	char ch2 = 'A';
+//	char ch3 = 'a';
+//
+//	printf("%c\n", tolower(ch1));
+//	printf("%c\n", tolower(ch2));
+//	printf("%c\n", tolower(ch3));
+//
+//	return 0;
+//}
+
 int main()
 {
-	int ret = isprint('a');//×ÖÄ¸
-	printf("%d\n", ret);
-	ret = isprint(' ');//¿Õ°××Ö·û
-	printf("%d\n", ret);
-	ret = isprint(',');//±êµã·ûºÅ
-	printf("%d\n", ret);
-	ret = isprint(1);//²»¿É¼û×Ö·û
-	printf("%d\n", ret);
+	char ch1 = '1';
+	char ch2 = 'A';
+	char ch3 = 'a';
+
+	printf("%c\n", toupper(ch1));
+	printf("%c\n", toupper(ch2));
+	printf("%c\n", toupper(ch3));
+
 	return 0;
 }
