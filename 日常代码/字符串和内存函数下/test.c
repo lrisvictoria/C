@@ -343,31 +343,31 @@
 //void* memset(void* dest, int c, size_t count);
 
 //模拟实现memset
-#include <assert.h>
-void* my_memset(void* dest, int c, size_t count)
-{
-	assert(dest);
-	void* ret = dest;
-	while (count--)
-	{
-		*(char*)dest = c;
-		dest = (char*)dest + 1;
-	}
-	return ret;
-}
-
-int main()
-{
-	int arr[] = { 1,2,3,4,5 };
-	my_memset(arr, 1, 20); //memset是以字节为单位来初始化内存单元的
-	//memset能接受的数据的最大值为ff，也就是一个字节的最大数据
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	    for (int i = 0; i < sz; i++)
-	    {
-	        printf("%d ", arr[i]);
-	    }
-	return 0;
-}
+//#include <assert.h>
+//void* my_memset(void* dest, int c, size_t count)
+//{
+//	assert(dest);
+//	void* ret = dest;
+//	while (count--)
+//	{
+//		*(char*)dest = c;
+//		dest = (char*)dest + 1;
+//	}
+//	return ret;
+//}
+//
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5 };
+//	my_memset(arr, 1, 20); //memset是以字节为单位来初始化内存单元的
+//	//memset能接受的数据的最大值为ff，也就是一个字节的最大数据
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	    for (int i = 0; i < sz; i++)
+//	    {
+//	        printf("%d ", arr[i]);
+//	    }
+//	return 0;
+//}
 
 //int main()
 //{
@@ -380,3 +380,41 @@ int main()
 //    }
 //    return 0;
 //}
+
+//int main()
+//{
+//	char arr[] = "a1249967801@163.com@haha nihao";//需要切割的字符串
+//	char buf[50] = { 0 };
+//	strcpy(buf, arr);//拷贝一份字符串，strtok会分割
+//
+//	const char* sep = "@. ";//分隔符的集合，sep指向的字符串
+//	char* str = NULL;
+//	for (str = strtok(buf, sep); str != NULL; str = strtok(NULL, sep))//循环遍历
+//	{
+//		printf("%s\n", str);
+//	}
+//	//三个分隔符，直接穷举
+//	//printf("%s\n", strtok(arr, sep));//只找第一个标记
+//	//printf("%s\n", strtok(NULL, sep));//从保存好\0的位置继续往后找
+//	//printf("%s\n", strtok(NULL, sep)); 
+//	//如果字符串中不存在标记了，则返回空指针
+//	return 0;
+//}
+
+int main()
+{
+	char arr[] = "hello@anduin@hello";
+	char buf[200] = { 0 };
+	strcpy(buf, arr);
+
+	const char* p = "@";
+	//char* str = NULL;
+	char* str = strtok(buf, p);
+
+	for (str = strtok(buf, p); str != NULL; str = strtok(NULL, p))
+	{
+		printf("%s\n", str);
+	}
+
+	return 0;
+}
