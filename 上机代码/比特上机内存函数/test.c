@@ -41,26 +41,35 @@
 //}
 
 //strtok
-//#include <stdio.h>
-//#include <string.h>
-//int main()
-//{
-//	char arr[] = "hello@liuxuan@hello";
-//	char buf[200] = { 0 };
-//	strcpy(buf, arr);
-//
-//	const char* p = "@";
-//	char* str = NULL;
-//	//char* str = strtok(buf, p);
-//
-//	
-//	for (str = strtok(buf, p); str != NULL; str = strtok(NULL, p))
-//	{
-//		printf("%s\n", str);
-//	}
-//	
-//	return 0;
-//}
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char arr[] = "hello@liuxuan@hello";
+	char buf[200] = { 0 };
+	strcpy(buf, arr);
+
+	const char* p = "@";
+	char* str = NULL;
+	//char* str = strtok(buf, p);
+
+	//字符串重复切割
+	//str首先进行切割，此时把@替换为\0
+	//此时字符串为hello\0liuxuan@fgh
+	//第二次处理，从起始处开始处理，但是字符串处理的是\0为结尾的
+	//所以处理的是abc\0，而不是想象中的@fgh
+
+	//而buf本身不为NULL，所以当一个字符串找不到分隔符时
+	//它返回的就是起始地址
+	//第二次进来把NULL传给strtok函数，由于是从\0处开始的就认为没什么可处理的
+	//于是返回NULL，循环结束
+	for (str = strtok(buf, p); str != NULL; str = strtok(NULL, p))
+	{
+		printf("%s\n", str);
+	}
+	
+	return 0;
+}
 
 //strerror
 
@@ -149,15 +158,15 @@
 //1 9 36 84 126 126 84 36 9 1
 
 
-int main()
-{
-	char ch1 = '1';
-	char ch2 = 'A';
-	char ch3 = 'a';
-	
-	printf("%c\n", toupper(ch1));
-	printf("%c\n", toupper(ch2));
-	printf("%c\n", toupper(ch3));
-
-	return 0;
-}
+//int main()
+//{
+//	char ch1 = '1';
+//	char ch2 = 'A';
+//	char ch3 = 'a';
+//	
+//	printf("%c\n", toupper(ch1));
+//	printf("%c\n", toupper(ch2));
+//	printf("%c\n", toupper(ch3));
+//
+//	return 0;
+//}
