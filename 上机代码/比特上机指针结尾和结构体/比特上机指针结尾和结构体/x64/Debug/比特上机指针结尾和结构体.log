@@ -1,3 +1,0 @@
-﻿  test.c
-D:\Anduin_code\anduins-code-warehouse\上机代码\比特上机指针结尾和结构体\比特上机指针结尾和结构体\test.c(11,10): warning C4047: “=”:“int **”与“int *”的间接级别不同
-  比特上机指针结尾和结构体.vcxproj -> D:\Anduin_code\anduins-code-warehouse\上机代码\比特上机指针结尾和结构体\x64\Debug\比特上机指针结尾和结构体.exe
