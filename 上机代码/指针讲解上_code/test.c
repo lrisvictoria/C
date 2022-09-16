@@ -219,7 +219,7 @@
 int main()
 {
 	const char* p = "abcdef";//加上const提高健壮性，常量字符串不能被修改
-	
+
 	//printf("%d\n", sizeof(p));//4/8 p是指针，存放的是首元素的地址
 	//printf("%d\n", sizeof(p + 1));//4/8 p+1为第二个元素的地址
 	//printf("%d\n", sizeof(*p));//1 
@@ -238,7 +238,7 @@ int main()
 	//&p为取出p的地址，p为一级指针，&p就是二级指针，类型为char**
 	//+1跳过一个char*，可以类比于int* p = &a;p + 1跳过一个整形，&a + 1也应该跳过一个整形
 	//那么&p + 1就是跳过一个char*
-	
+
 
 	printf("%d\n", strlen(p));//6 计算\0之前出现的字符个数
 	printf("%d\n", strlen(p + 1));//5 从第二个元素的地址开始计算
