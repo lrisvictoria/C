@@ -79,26 +79,44 @@
 //	return 0;
 //}
 
-char* my_strncat(char* dest, char* src, size_t count)
-{
-	char* start = dest;
-	while (*dest)//找目标字符串的\0
-	{
-		dest++;
-	}
-	while (count--)//count为真
-	{
-		if ((*dest++ = *src++) == 0)//操作长度大于源字符串，不进行补\0，直接返回
-			return(start);
-	}
-	*dest = '\0';//追加完毕没有返回，则手动加上\0,此时\0经过++指向追加元素最后元素的后一个位置
-	return (start);
-}
+//char* my_strncat(char* dest, char* src, size_t count)
+//{
+//	char* start = dest;
+//	while (*dest)//找目标字符串的\0
+//	{
+//		dest++;
+//	}
+//	while (count--)//count为真
+//	{
+//		if ((*dest++ = *src++) == 0)//操作长度大于源字符串，不进行补\0，直接返回
+//			return(start);
+//	}
+//	*dest = '\0';//追加完毕没有返回，则手动加上\0,此时\0经过++指向追加元素最后元素的后一个位置
+//	return (start);
+//}
+//int main()
+//{
+//	char arr1[20] = "hello ";
+//	char arr2[] = "worldld";
+//	char* ret = my_strncat(arr1, arr2, 5);
+//	printf("%s\n", ret);
+//	return 0;
+//}
+
+//int main()
+//{
+//    char arr1[10];
+//    char arr2[] = "hello";
+//    strcpy(arr1, arr2);
+//    printf("%s\n", arr1);
+//    return 0;
+//}
+
+#include <string.h>
 int main()
 {
-	char arr1[20] = "hello ";
-	char arr2[] = "worldld";
-	char* ret = my_strncat(arr1, arr2, 5);
-	printf("%s\n", ret);
-	return 0;
+    char arr1[10];
+    char arr2[] = "hello";
+    printf("%s\n", strcpy(arr1, arr2));
+    return 0;
 }
