@@ -2,19 +2,19 @@
 #include <stdio.h>
 
 //结构体的内存对齐
-//struct S1
-//{
-//	char c1;//1
-//	int i;//4
-//	char c2;//1
-//};
-////6 对吗？err
-//struct S2
-//{
-//	char c1;
-//	char c2;
-//	int i;
-//};
+struct S1
+{
+	char c1;//1
+	int i;//4
+	char c2;//1
+};
+//6 对吗？err
+struct S2
+{
+	char c1;
+	char c2;
+	int i;
+};
 ////这个又是多少？Z
 //
 //struct S3
@@ -33,24 +33,24 @@
 //	struct S3 s3;
 //	double d;
 //};//结构体嵌套情况下，结果是多少？
-//#include <stddef.h>
+#include <stddef.h>
 //
-//int main()
-//{
-//	/*printf("%u\n", offsetof(struct S3, d));
-//	printf("%u\n", offsetof(struct S3, c));
-//	printf("%u\n", offsetof(struct S3, i));*/
-//
-//	//struct S1 s1;
-//	//struct S2 s2;
-//	//struct S3 s3;
-//	//printf("%d\n", sizeof(s1));//12
-//	//printf("%d\n", sizeof(s2));//8
-//	//printf("%d\n", sizeof(s3));//
-//
-//	printf("%d\n", sizeof(struct S4));//32
-//	return 0;
-//}
+int main()
+{
+	printf("%u\n", offsetof(struct S1, c1));
+	printf("%u\n", offsetof(struct S1, i));
+	printf("%u\n", offsetof(struct S1, c2));
+
+	/*struct S1 s1;
+	struct S2 s2;*/
+	//struct S3 s3;
+	//printf("%d\n", sizeof(s1));//12
+	//printf("%d\n", sizeof(s2));//8
+	//printf("%d\n", sizeof(s3));//
+
+	//printf("%d\n", sizeof(struct S4));//32
+	return 0;
+}
 
 
 //为什么会存在内存对齐
@@ -153,7 +153,7 @@ struct AA
 //	s.d = 4;
 //	return 0;
 //} 
- 
+
 //enum Sex
 //{
 //	MALE,
@@ -212,11 +212,11 @@ struct AA
 //而C语言的类型检查并不严格
 
 
-int main()
-{
-	enum Color c = 5;//把RED(5)把c给赋值为RED，在c语言中是可以的
-	//但是在C++中是不行的，因为c的类型是枚举类型，应该用枚举类型的值赋给c
-	//这时采用这种写法
-	//enum Color c = RED;
-	return 0;
-}
+//int main()
+//{
+//	enum Color c = 5;//把RED(5)把c给赋值为RED，在c语言中是可以的
+//	//但是在C++中是不行的，因为c的类型是枚举类型，应该用枚举类型的值赋给c
+//	//这时采用这种写法
+//	//enum Color c = RED;
+//	return 0;
+//}
