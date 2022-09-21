@@ -25,31 +25,39 @@ int main()
 		menu();
 		printf("请选择>:");
 		scanf("%d", &input);
-		//system("cls");
 		switch (input)
 		{
 		case 1:
+			system("cls");
 			AddContact(&con);
 			break;
 		case 2:
+			system("cls");
 			DelContact(&con);
 			break;
 		case 3:
+			system("cls");
 			SearchContact(&con);
 			break;
 		case 4:
+			system("cls");
 			ModifyContact(&con);
 			break;
 		case 5:
+			system("cls");
 			ShowContact(&con);//显示通讯录
 			break;
 		case 6:
+			system("cls");
 			SortContact(&con);
 			break;
 		case 0:
-			printf("选择错误\n");
+			system("cls");
+			printf("退出通讯录\n");
 			break;
 		default:
+			system("cls");
+			printf("选择错误\n");
 			break;
 		}
 	} while (input);

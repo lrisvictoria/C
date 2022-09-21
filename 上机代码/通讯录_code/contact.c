@@ -100,7 +100,7 @@ void DelContact(struct Contact* pc)
 void SearchContact(const struct Contact* pc)
 {
 	char name[MAX_NAME];//存放删除人的名字
-	printf("请输入要删除人的名字:>");
+	printf("请输入要查找人的名字:>");
 	scanf("%s", name);
 	//查找一下指定的人是否存在
 	int ret = FindByName(pc, name);
@@ -132,13 +132,13 @@ void ModifyContact(struct Contact* pc)
 	else
 	{
 		printf("请输入名字:>");
-		scanf("%s", pc->data[ret].name);//将数据放到sz下标处
+		scanf("%s", pc->data[ret].name);
 		printf("请输入性别:>");
 		scanf("%s", pc->data[ret].sex);
 		printf("请输入电话:>");
 		scanf("%s", pc->data[ret].tele);
 		printf("请输入年龄:>");
-		scanf("%d", &(pc->data[ret].age));//age成员是个变量，需要取地址
+		scanf("%d", &(pc->data[ret].age));
 		printf("请输入住址:>");
 		scanf("%s", pc->data[ret].addr);
 
@@ -146,13 +146,68 @@ void ModifyContact(struct Contact* pc)
 	}
 }
 
+void SortMenu()
+{
+	printf("**************************************\n");
+	printf("*****   1. name      2. sex      *****\n");
+	printf("*****   3. tele      4. age      *****\n");
+	printf("*****   5. addr      0. exit     *****\n");
+	printf("**************************************\n");
+}
+
+int CmpByName(const void* e1, const void* e2)
+{
+	return strcmp((((struct PeoInfo*)e1)->name), ((struct PeoInfo*)e2)->name);
+}
+
+int CmpBySex(const void* e1, const void* e2)
+{
+	return strcmp((((struct PeoInfo*)e1)->sex), ((struct PeoInfo*)e2)->sex);
+}
+
+int CmpByTele(const void* e1, const void* e2)
+{
+	return strcmp((((struct PeoInfo*)e1)->tele), ((struct PeoInfo*)e2)->tele);
+}
+
 int CmpByAge(const void* e1, const void* e2)
 {
 	return (((struct PeoInfo*)e1)->age - ((struct PeoInfo*)e2)->age);
 }
 
+int CmpByAddr(const void* e1, const void* e2)
+{
+	return strcmp((((struct PeoInfo*)e1)->addr), ((struct PeoInfo*)e2)->addr);
+}
+
+
 //按照名字排序
 void SortContact(struct Contact* pc)
 {
-	qsort(pc->data, pc->sz, sizeof(struct PeoInfo), CmpByAge);
+	int choice = 0;
+	SortMenu();
+	printf("请选择如何排序:>");
+	scanf("%d", &choice);
+	switch(choice)
+	{
+	case 1:
+		qsort(pc->data, pc->sz, sizeof(struct PeoInfo), CmpByName);
+		break;
+	case 2:
+		qsort(pc->data, pc->sz, sizeof(struct PeoInfo), CmpBySex);
+		break;
+	case 3:
+		qsort(pc->data, pc->sz, sizeof(struct PeoInfo), CmpByTele);
+		break;
+	case 4:
+		qsort(pc->data, pc->sz, sizeof(struct PeoInfo), CmpByAge);
+		break;
+	case 5:
+		qsort(pc->data, pc->sz, sizeof(struct PeoInfo), CmpByAddr);
+		break;
+	case 0:
+		printf("取消排序\n");
+		break;
+	}
+	printf("排序成功\n");
 }
