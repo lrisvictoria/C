@@ -172,15 +172,107 @@
 //    return 0;
 //}
 
-int test()
-{
-	int a = 10;
-	return a;
-}
+//int test()
+//{
+//	int a = 10;
+//	return a;
+//}
+//
+//int main()
+//{
+//	int ret = test();
+//	printf("%d\n", ret);
+//	return 0;
+//}
 
+//int* test()
+//{
+//	int a = 10;
+//	return &a;
+//}
+//
+//int main()
+//{
+//	int* p = test();
+//	printf("hello\n");
+//	printf("%d\n", *p);
+//	return 0;
+//}
+
+//void GetMemory(char** p, int num)
+//{
+//    *p = (char*)malloc(num);
+//}
+//void Test(void)
+//{
+//    char* str = NULL;
+//    GetMemory(&str, 100);
+//    strcpy(str, "hello");
+//    printf(str);
+//}
+//int main()
+//{
+//    Test();
+//    return 0;
+//}
+
+void GetMemory(char** p, int num)
+{
+    *p = (char*)malloc(num);
+}
+void Test(void)
+{
+    char* str = NULL;
+    GetMemory(&str, 100);
+    strcpy(str, "hello");
+    printf(str);
+    free(str);
+    str = NULL;
+}
 int main()
 {
-	int ret = test();
-	printf("%d\n", ret);
-	return 0;
+    Test();
+    return 0;
 }
+
+//void Test(void)
+//{
+//	char* str = (char*)malloc(100);
+//	strcpy(str, "hello");
+//	free(str);
+//	if (str != NULL)
+//	{
+//		strcpy(str, "world");
+//		printf(str);
+//	}
+//}
+//
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
+
+//void Test(void)
+//{
+//	char* str = (char*)malloc(100);
+//	if (str == NULL)
+//	{
+//		return;
+//	}
+//	strcpy(str, "hello");
+//	free(str);
+//	str = NULL;
+//
+//	if (str != NULL)
+//	{
+//		strcpy(str, "world");
+//		printf(str);
+//	}
+//}
+//
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
