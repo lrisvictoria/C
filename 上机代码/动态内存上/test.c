@@ -128,8 +128,138 @@
 //    return 0;
 //}
 
+//int main()
+//{
+//	int* p = (int*)calloc(10, 4);
+//
+//}
+
+//int test()
+//{
+//	int* p = (int*)malloc(40);
+//	if (p == NULL)
+//	{
+//		//...
+//		return 1;
+//	}
+//	//使用
+//	if (1)//某个条件满足
+//	{
+//		return 2;//条件满足返回
+//	}
+//	//释放
+//	free(p);//没有释放
+//	p = NULL;
+//	return 0;
+//}
+//int main()
+//{
+//	test();
+//	return 0;
+//}
+
+//醉代码
+//程序会奔溃
+//int main()
+//{
+//	int num = 10;
+//	int* p = num;
+//
+//	free(p);
+//	p = NULL;
+//	return 0;
+//}
+//没问题，因为free的参数如果是空指针，什么都不干
+//int main()
+//{
+//	int num = 10;
+//	int* p = NULL;
+//
+//	free(p);
+//	p = NULL;
+//	return 0;
+//}
+
+//realloc
+//int main()
+//{
+//	int* p = (int*)malloc(40);
+//	if (p == NULL)
+//	{
+//		return 1;
+//	}
+//	//使用
+//	int  i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		*(p + i) = i;
+//	}
+//	//打印
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", *(p + i));
+//	}
+//	//增加空间
+//	int* ptr = realloc(p, 80);//不能用p接收
+//	//当realloc开辟空间失败时，返回的是NULL
+//	//p本来指向40个字节的空间，但是空间调整失败了，这不是偷鸡不成蚀把米吗
+//	//连原本的空间都没了，你说realloc干的什么事情
+//	//所以我们要用一个全新的指针来接收
+//	//释放
+//	if (ptr != NULL)
+//	{
+//		p = ptr;
+//		ptr = NULL;//防止ptr误使用
+//	}
+//	//扩容后使用
+//	for (i = 10; i < 20; i++)
+//	{
+//		*(p + i) = i;
+//	}
+//	free(p);
+//	p = NULL;
+//	return 0;
+//}
+
+//int main()
+//{
+//	realloc(NULL, 40);//等价于malloc(40)
+//	return 0;  
+//}
+
+//realloc能对自己调整的空间再次realloc吗
+
+
+//int main()
+//{
+//	int* p = (int*)malloc(80);
+//	if (p == NULL)
+//	{
+//		return 1;
+//	}
+//	//使用
+//	int  i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		*(p + i) = i;
+//	}
+//	realloc(p, 8000);//无返回值接收
+//	//扩容后使用
+//	for (i = 10; i < 20; i++)
+//	{
+//		*(p + i) = i;
+//	}
+//	free(p);
+//	p = NULL;
+//	return 0;
+//}
+
 int main()
 {
-	int* p = (int*)calloc(10, 4);
+	int* p = (int*)malloc(40);
+	int* ptr = (int*)realloc(p, 80);
+	
+	int* pptr = (int*)realloc(ptr, 120);
 
+	return 0;
 }
