@@ -258,7 +258,7 @@ int main()
 {
 	int* p = (int*)malloc(40);
 	int* ptr = (int*)realloc(p, 80);
-	
+
 	int* pptr = (int*)realloc(ptr, 120);
 
 	return 0;
