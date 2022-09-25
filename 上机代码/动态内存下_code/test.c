@@ -295,17 +295,35 @@
 //    return 0;
 //}
 
+//void Test(void)
+//{
+//	char* str = (char*)malloc(100);
+//	if (str == NULL)
+//	{
+//		return;
+//	}
+//	strcpy(str, "hello");
+//	free(str);
+//	str = NULL;
+//
+//	if (str != NULL)
+//	{
+//		strcpy(str, "world");
+//		printf(str);
+//	}
+//}
+//
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
+
 void Test(void)
 {
 	char* str = (char*)malloc(100);
-	if (str == NULL)
-	{
-		return;
-	}
 	strcpy(str, "hello");
 	free(str);
-	str = NULL;
-
 	if (str != NULL)
 	{
 		strcpy(str, "world");
