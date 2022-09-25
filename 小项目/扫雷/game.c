@@ -58,13 +58,13 @@ static void flag_menu()
 	printf("####################################\n");
 }
 //标记雷的位置
-static void set_flag(char show[ROWS][COLS], int row, int col,int *pf)
+static void set_flag(char show[ROWS][COLS], int row, int col, int* pf)
 {
 	int x = 0;
 	int y = 0;
 	if (*pf == EASY_COUNT)
 	{
-		return ;
+		return;
 	}
 	while (1)
 	{
@@ -92,7 +92,7 @@ static void set_flag(char show[ROWS][COLS], int row, int col,int *pf)
 	}
 }
 //取消标记
-static void cancel_flag(char show[ROWS][COLS], int row, int col, int *pf)
+static void cancel_flag(char show[ROWS][COLS], int row, int col, int* pf)
 {
 	int x = 0;
 	int y = 0;
