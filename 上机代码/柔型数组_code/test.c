@@ -43,8 +43,88 @@ int main()
 		printf("%d ", ps->arr[i]);
 	}
 
-	//释放
+	// 调整
+	struct S* ptr = (struct S*)realloc(ps, sizeof(struct S) + sizeof(int) * 10);
+	if (ptr == NULL)
+	{
+		return 1;
+	}
+	else
+	{
+		ps = ptr;
+		ptr = NULL;
+	}
+	// 释放
 	free(ps);
 	ps = NULL;
 	return 0;
 }
+
+// 一定要柔性数组吗？不可以用其他方式吗？
+//struct S
+//{
+//	int n;
+//	float s;
+//	int* arr;// 动态开辟
+//};
+//
+//int main()
+//{
+//	// 柔性数组数据全放在堆上
+//	struct S* ps = (struct S*)malloc(sizeof(struct S));
+//	if (ps == NULL)
+//	{
+//		return 1;
+//	}
+//
+//	ps->n = 100;
+//	ps->s = 5.5f;
+//	int* ptr = (int*)malloc(sizeof(int) * 4);
+//	if (ptr == NULL)
+//	{
+//		return 1;
+//	}
+//	else
+//	{
+//		ps->arr = ptr;
+//	}
+//	// 使用...
+//	int i = 0;
+//	for (i = 0; i < 4; i++)
+//	{
+//		scanf("%d", &(ps->arr[i]));
+//	}
+//
+//	// 调整
+//	int* pptr = (int*)ralloc(ps->arr, 10 * sizeof(int));
+//	if (pptr == NULL)
+//	{
+//		return 1;
+//	}
+//	else
+//	{
+//		ps->arr = pptr;
+//	}
+//	// 释放
+//	// 一定要先释放ps->arr
+//	// 否则释放ps后，ps为野指针
+//	// 再释放ps->arr会有错误
+//	free(ps->arr);
+//	ps->arr = NULL;
+//	free(ps);
+//	ps = NULL;
+//	return 0;
+//}
+
+//struct S
+//{
+//	int n;// 至少一个其他成员
+//	float s;
+//	int arr[0];// 柔性数组成员
+//};
+//
+//int main()
+//{
+//	printf("%d\n", sizeof(struct S));
+//	return 0;
+//}
