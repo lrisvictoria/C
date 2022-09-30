@@ -59,11 +59,11 @@ int main()
 			break;
 		case EXIT:
 			system("cls");
+			DestoryContact(&con);
 			printf("退出通讯录\n");
 			break;
 		default:
 			system("cls");
-			DestoryContact(&con);
 			printf("选择错误，请重新选择\n");
 			break;
 
