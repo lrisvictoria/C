@@ -105,7 +105,6 @@ void DelContact(struct Contact** pc)
 	{
 		printf("要删除人的不存在\n");
 	}
-	
 	else
 	{
 		memmove((*pc)->data + ret, (*pc)->data + ret + 1, ((*pc)->sz - ret - 1) * sizeof(struct PeoInfo));
@@ -261,4 +260,5 @@ void DestoryContact(struct Contact** pc)
 	(*pc)->sz = 0;
 	(*pc)->capacity = 0;
 	free(*pc);
+	pc = NULL;
 }

@@ -71,7 +71,6 @@ int main()
 			system("cls");
 			printf("选择错误，请重新选择\n");
 			break;
-
 		}
 	} while (input);
 }
