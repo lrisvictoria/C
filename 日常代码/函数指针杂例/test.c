@@ -1,25 +1,25 @@
 #define _CRT_SECURE_NO_WARNINGS 1 
 
-//#include <stdio.h>
-//
-//int Add(int x, int y)
-//{
-//	return x + y;
-//}
-//
-//int Sub(int x, int y)
-//{
-//	return x - y;
-//}
-//int main()
-//{
-//	int (*pa[2])(int, int) = { Add , Sub};
-//	printf("%p\n", pa[0]);
-//	printf("%p\n", Add);
-//	printf("%p\n", &Add);
-//
-//	return 0;
-//}
+#include <stdio.h>
+
+int Add(int x, int y)
+{
+	return x + y;
+}
+
+int Sub(int x, int y)
+{
+	return x - y;
+}
+int main()
+{
+	int (*pa[2])(int, int) = { Add , Sub};
+	printf("%p\n", pa[0]);
+	printf("%p\n", Add);
+	printf("%p\n", &Add);
+
+	return 0;
+}
 
 // 函数指针，指向的是一个函数
 // 函数指针数组，每个元素为函数的地址
@@ -28,6 +28,13 @@
 // &Add也是函数的地址
 // Add也是函数的地址
 // &只是为了让我们更好理解
+
+// 但是经过调试我发现一个问题：
+// 为什么pa[0]的值和Add/&Add的值不一样？
+// 这是规则转换了
+// 因为函数真正调用的时候，其实不是直接用的函数的地址
+// 它中间其实还存在着一些转换
+// 目前不必深究
 
 //int Add(int x, int y)
 //{
@@ -59,10 +66,3 @@
 //	printf("%p\n", arr[0]);
 //}
 
-int arr[100];
-
-int main()
-{
-
-	return 0;
-}
